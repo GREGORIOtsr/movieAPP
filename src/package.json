@@ -1,0 +1,30 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Movie APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GREGORIOtsr/movieAPP.git"
+  },
+  "author": "Gregorio Tremont, Maria Noaghiul, Alejandro Márquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GREGORIOtsr/movieAPP/issues"
+  },
+  "homepage": "https://github.com/GREGORIOtsr/movieAPP#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "pg": "^8.11.3",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1"
+  }
+}
