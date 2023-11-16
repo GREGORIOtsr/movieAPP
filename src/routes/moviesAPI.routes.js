@@ -1,5 +1,5 @@
 const express = require('express');
-const filmsApiController = require("../controllers/filmsApi.controller");
+const filmsApiController = require("../controllers/movieApi.controller");
 const router = express.Router();
 
 router.get('/search/:title', filmsApiController.getFilm);

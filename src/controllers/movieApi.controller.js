@@ -1,5 +1,5 @@
 
-const fetchMovie = require('../services/fetchFilm');
+const fetchMovie = require('../services/fetchMovies');
 
 const getFilm = async (req, res) => {
     try {
