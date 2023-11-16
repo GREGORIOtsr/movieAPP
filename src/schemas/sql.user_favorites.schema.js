@@ -19,7 +19,7 @@ const User_favorites = db.define(
     db,
     modelName: "User_favorites",
     tableName: "user_favorites",
-    timestamps: "true",
+    timestamps: false
   }
 );
 

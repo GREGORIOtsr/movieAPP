@@ -42,3 +42,5 @@ const controllers = {
     createFav,
     deleteFav
 }
+
+module.exports = controllers;

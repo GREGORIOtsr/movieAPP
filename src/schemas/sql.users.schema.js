@@ -30,7 +30,7 @@ const Users = db.define(
     db,
     modelName: "Users",
     tableName: "users",
-    timestamps: "true"
+    timestamps: false
   }
 );
 
