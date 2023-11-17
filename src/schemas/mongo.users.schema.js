@@ -5,7 +5,7 @@ const regex = require('../utils/regex');
 const objectSchema = {
     email: { 
         type: String, 
-        required: true,
+        require: true,
         unique: true,
         validate: {
             validator: function(value){
@@ -14,14 +14,15 @@ const objectSchema = {
             message: "Invalid email format."
         }
     },
-    name: { 
-        type: String, 
-        required: true
-    },
     username: { 
-        type: String
+        type: String,
+        require: true
     },
-    profile_pic:{
+    password: {
+        type: String,
+        require: true
+    },
+    profile_pic: {
         type: String,
         validate: {
             validator: function(value){
@@ -29,11 +30,15 @@ const objectSchema = {
             }, 
             message: "Invalid image, must be JPG, JPGE or PNG file."
         }
+    },
+    logged: {
+        type: Boolean,
+        default: false
     }
 };
 
-const providerSchema = mongoose.Schema(objectSchema);
+const usersSchema = mongoose.Schema(objectSchema);
 
-const Provider = mongoose.model('Provider', providerSchema);
+const User = mongoose.model('User', usersSchema);
 
-module.exports = Provider;
+module.exports = User;
