@@ -24,7 +24,8 @@
     "mongoose": "^8.0.0",
     "node-fetch": "^3.3.2",
     "pg": "^8.11.3",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "sequelize": "^6.35.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
