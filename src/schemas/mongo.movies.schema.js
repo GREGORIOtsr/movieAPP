@@ -10,28 +10,43 @@ const objectSchema = {
     poster: {
         type: String,
         require: true,
-        validate: {
-            validator: function(value){
-                return regex.image.test(value);
-            }, 
-            message: "Invalid image, must be JPG, JPGE or PNG file."
-        }
+        // validate: {
+        //     validator: (str) => {return regex.image.test(value);}, 
+        //     message: "Invalid image, must be JPG, JPGE or PNG file."
+        // }
     },
-    year: {
-        type: Number,
+    date: {
+        type: String,
         require: true
     },
     genre: {
-        type: [String],
+        type: [String], // Array string for one or more genres
         require: true
     },
-    duration :{
-        type: String
+    runtime: {
+        type: Number, // Minutes
+        require: true
     },
-    synopsis,
-    director,
-    actors,
-    createdBy
+    synopsis: {
+        type: String,
+        require: true,
+        // validate: {
+        //     validator: (str) => {return str.length > 359},
+        //     message: "Synopsis must have a minimum of 360 characters."
+        // }
+    },
+    director: {
+        type: String,
+        require: true
+    },
+    actors: {
+        type: [String]
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        require: true
+    }
 }
 
 const moviesSchema = mongoose.Schema(objectSchema);
@@ -39,10 +54,3 @@ const moviesSchema = mongoose.Schema(objectSchema);
 const Movie = mongoose.model('Movie', moviesSchema);
 
 module.exports = Movie;
-
-
-// provider: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'Provider',
-//     required: true
-// }

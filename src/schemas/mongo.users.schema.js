@@ -7,12 +7,10 @@ const objectSchema = {
         type: String, 
         require: true,
         unique: true,
-        validate: {
-            validator: function(value){
-                return regex.email.test(value);
-            }, 
-            message: "Invalid email format."
-        }
+        // validate: {
+        //     validator: (str) => {return regex.email.test(str)}, 
+        //     message: "Invalid email format."
+        // }
     },
     username: { 
         type: String,
@@ -24,12 +22,15 @@ const objectSchema = {
     },
     profile_pic: {
         type: String,
-        validate: {
-            validator: function(value){
-                return regex.image.test(value);
-            }, 
-            message: "Invalid image, must be JPG, JPGE or PNG file."
-        }
+        // validate: {
+        //     validator: (str) => {return regex.image.test(str)}, 
+        //     message: "Invalid image, must be JPG, JPGE or PNG file."
+        // }
+    },
+    role: {
+        type: String,
+        require: true,
+        default: 'Member'
     },
     logged: {
         type: Boolean,
