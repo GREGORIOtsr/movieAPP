@@ -4,15 +4,19 @@ app.use(express.json())
 const port = process.env.PORT || 3000;
 
 const moviesApiRoutes = require("./routes/moviesAPI.routes")
-const viewsAdmin = require('./routes/views.admin.routes')
+const viewsAdmin = require('./routes/dashboardAdmin.routes')
 const createMovieAdmin = require('./routes/createMovie.routes')
+const editMovieAdmin = require('./routes/editMovie.routes')
 //Rutas API
 app.use('/api/', moviesApiRoutes);
-// app.use('/api/createMovie'.moviesApiRoutes)
-// // app.use('/editMovie'.moviesApiRoutes)
+app.use('/api/createMovie', moviesApiRoutes)
+
 // // app.use('/api/removeMovie'.moviesApiRoutes)
+
+//Rutas views
 app.use('/dashboardadmin', viewsAdmin);
 app.use('/createmovie', createMovieAdmin);
+app.use('/editmovie', editMovieAdmin)
 
 
 // Morgan logger

@@ -2,7 +2,7 @@ const createMovieAdmin = (req,res)=>{
 
  
 
-    res.status(200).render('createMovie.admin.pug');
+    res.status(200).render('createMovie.pug');
 }
 
 module.exports = {
