@@ -5,11 +5,11 @@ const regex = require('../utils/regex');
 const objectSchema = {
     title: {
         type: String,
-        require: true
+        required: true
     },
     poster: {
         type: String,
-        require: true,
+        required: true,
         // validate: {
         //     validator: (str) => {return regex.image.test(value);}, 
         //     message: "Invalid image, must be JPG, JPGE or PNG file."
@@ -17,19 +17,19 @@ const objectSchema = {
     },
     date: {
         type: String,
-        require: true
+        required: true
     },
     genre: {
         type: [String], // Array string for one or more genres
-        require: true
+        required: true
     },
     runtime: {
         type: Number, // Minutes
-        require: true
+        required: true
     },
     synopsis: {
         type: String,
-        require: true,
+        required: true,
         // validate: {
         //     validator: (str) => {return str.length > 359},
         //     message: "Synopsis must have a minimum of 360 characters."
@@ -37,7 +37,7 @@ const objectSchema = {
     },
     director: {
         type: String,
-        require: true
+        required: true
     },
     actors: {
         type: [String]
@@ -45,7 +45,7 @@ const objectSchema = {
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        require: true
+        required: true
     }
 }
 

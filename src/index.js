@@ -3,20 +3,23 @@ const app = express();
 app.use(express.json())
 const port = process.env.PORT || 3000;
 
-const moviesApiRoutes = require("./routes/moviesAPI.routes")
-const viewsAdmin = require('./routes/dashboardAdmin.routes')
-const createMovieAdmin = require('./routes/createMovie.routes')
-const editMovieAdmin = require('./routes/editMovie.routes')
+const moviesAPIRoutes = require("./routes/moviesAPI.routes");
+const usersAPIroutes = require("./routes/usersAPI.routes");
+const viewsAdmin = require('./routes/dashboardAdmin.routes');
+const createMovieAdmin = require('./routes/createMovie.routes');
+const editMovieAdmin = require('./routes/editMovie.routes');
 //Rutas API
-app.use('/api/', moviesApiRoutes);
-app.use('/api/createMovie', moviesApiRoutes)
+app.use('/api', moviesAPIRoutes);
+app.use('/api', usersAPIroutes);
+
+
 
 // // app.use('/api/removeMovie'.moviesApiRoutes)
 
 //Rutas views
 app.use('/dashboardadmin', viewsAdmin);
 app.use('/createmovie', createMovieAdmin);
-app.use('/editmovie', editMovieAdmin)
+app.use('/editmovie', editMovieAdmin);
 
 
 // Morgan logger

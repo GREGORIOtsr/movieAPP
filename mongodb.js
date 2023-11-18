@@ -5,32 +5,31 @@ const regex = require('../utils/regex');
 const objectSchema = {
     email: { 
         type: String, 
-        required: true,
+        require: true,
         unique: true,
-        // validate: {
-        //     validator: (str) => {return regex.email.test(str)}, 
-        //     message: "Invalid email format."
-        // }
+        validate: {
+            validator: function(value){
+                return regex.email.test(value);
+            }, 
+            message: "Invalid email format."
+        }
     },
     username: { 
         type: String,
-        required: true
+        require: true
     },
     password: {
         type: String,
-        required: true
+        require: true
     },
     profile_pic: {
         type: String,
-        // validate: {
-        //     validator: (str) => {return regex.image.test(str)}, 
-        //     message: "Invalid image, must be JPG, JPGE or PNG file."
-        // }
-    },
-    role: {
-        type: String,
-        required: true,
-        default: 'Member'
+        validate: {
+            validator: function(value){
+                return regex.image.test(value);
+            }, 
+            message: "Invalid image, must be JPG, JPGE or PNG file."
+        }
     },
     logged: {
         type: Boolean,
