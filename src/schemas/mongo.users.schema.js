@@ -5,7 +5,7 @@ const regex = require('../utils/regex');
 const objectSchema = {
     email: { 
         type: String, 
-        require: true,
+        required: true,
         unique: true,
         // validate: {
         //     validator: (str) => {return regex.email.test(str)}, 
@@ -14,11 +14,10 @@ const objectSchema = {
     },
     username: { 
         type: String,
-        require: true
+        required: true
     },
     password: {
-        type: String,
-        require: true
+        type: String
     },
     profile_pic: {
         type: String,
@@ -29,7 +28,7 @@ const objectSchema = {
     },
     role: {
         type: String,
-        require: true,
+        required: true,
         default: 'Member'
     },
     logged: {
