@@ -3,7 +3,6 @@ const Movie = require('../models/movies.model');
 const { createMovie, updateMovie, deleteMovie } = require('../models/movies.model');
 
 
-
 const getMovies = async (req, res) =>{ 
     try {
         const title = req.params.title
@@ -36,7 +35,7 @@ const postMovie = async  (req, res) => {
 
 const putMovie = async (req, res) => {
     try {
-        const movie = await updateMovie(req.params.id, req.body);
+        const movie = await editUserFavorite(req.params.id, req.body);
         if (!movie) {
             return res.status(404).json({ message: 'Movie not found' });
         }
@@ -45,7 +44,6 @@ const putMovie = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
-
 
 const removeMovie = async (req, res) => {
     try {

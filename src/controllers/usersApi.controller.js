@@ -14,7 +14,6 @@ const getUser = async (req, res) => {
   }
 };
 
-
 const postUser = async (req, res) => {
   try {
       const userData = req.body; 
