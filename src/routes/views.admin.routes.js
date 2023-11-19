@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+//Hacer destructuring para acotar estas líneas
 //Variables con ubicación de los controllers de views:
 const dashboardAdmin = require("../controllers/controllers.views/dashboardAdmin.controller");
 const createMovie = require("../controllers/controllers.views/createMovieAdmin.controller");
