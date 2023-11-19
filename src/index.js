@@ -12,11 +12,12 @@ app.set('view engine', 'pug');
 
 // const moviesRoutes = require("./routes/filmsAPI.routes")
 const viewsUserRoutes = require("./routes/views.user.routes")
+const authenticationRoutes = require("./routes/authentication.routes")
 // const viewsAdminRoutes = require("./routes/views.admin.routes")
 
 // Morgan logger
 const morgan = require('./middlewares/morgan');
-// app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
+app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 
 //Rutas del user
 // app.use('/', viewsUserRoutes);
@@ -24,7 +25,7 @@ const morgan = require('./middlewares/morgan');
 // app.use('/')
 // app.use('/')
 app.use('/', viewsUserRoutes);
-// app.use('/', viewsUserRoutes);
+app.use('/', authenticationRoutes);
 // app.use('/', viewsUserRoutes);
 // app.use('/', viewsUserRoutes);
 
