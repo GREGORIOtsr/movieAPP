@@ -17,7 +17,7 @@ const authenticationRoutes = require("./routes/authentication.routes")
 
 // Morgan logger
 const morgan = require('./middlewares/morgan');
-app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
+// app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 
 //Rutas del user
 // app.use('/', viewsUserRoutes);

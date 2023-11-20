@@ -13,7 +13,22 @@ html
             a(href="ruta para direccionar") Texto de los elementos del menú desplegable
     main
       input(type="text" placeholder="busca peli por título")
-      button(type="submit") buscar
+      button(id="search-button" type="submit") buscar
       p ¡Busca la peli que quieras!
-      section.containerPelicula 
-        
+      section.containerPelicula
+    script.
+      const searchButton = document.querySelector('#search-button');
+      searchButton.addEventListener('click', searchMovies)
+
+      function searchMovies() {
+        try {
+          // TODO: change url.
+          let response = await fetch('/api/search');
+          // TODO: check if response is OK.
+          let data = await response.json();
+          const movieContainer = document.querySelector('.containerPelicula');
+          // TODO: foreach movie, create an html element with its information.
+        } catch (error) {
+          // TODO: show an alert with an error message or something.
+        }
+      }    
