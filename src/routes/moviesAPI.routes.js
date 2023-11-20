@@ -1,10 +1,10 @@
 const express = require('express');
-const filmsApiController = require("../controllers/movieApi.controller");
+const moviesAPIController = require("../controllers/moviesAPI.controller");
 const router = express.Router();
 
-router.get('/search/:title', filmsApiController.getFilm);
-router.post('/');
-router.put('/');
-router.delete('/');
+router.get('/search/:title', moviesAPIController.getMovies);
+router.post('/createMovie', moviesAPIController.postMovie);
+router.put('/editMovie/:id', moviesAPIController.putMovie);
+router.delete('/deleteMovie/:id', moviesAPIController.removeMovie);
 
 module.exports = router
