@@ -8,7 +8,7 @@ app.set('views', './views');
 
 // Se indica el motor del plantillas a utilizar
 app.set('view engine', 'pug');
-
+app.use(express.static("public"));
 
 const moviesAPIRoutes = require("./routes/moviesAPI.routes");
 const usersAPIroutes = require("./routes/usersAPI.routes");

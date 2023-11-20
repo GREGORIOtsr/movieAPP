@@ -1,0 +1,30 @@
+/* Paleta de colores: 
+- Gris casi negro => #212B30
+- Gris oscuro => #45555F
+- Gris clarito => #858585
+- Azul clarito => #18B8DC
+- Verde clarito => #7EC8A0
+*/
+header{
+    display: flex;
+    background-color: #45555F;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 7px 20px 7px;
+    align-items: center;
+    margin-bottom: 42px;
+}
+.tituloClaqueta{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: x-large;
+}
+.tituloClaqueta img{
+    width: 100px;
+    margin-left: 25px;
+}
+.tituloClaqueta h1{
+    font-size: 75px;
+    margin-left: 12px;
+}
