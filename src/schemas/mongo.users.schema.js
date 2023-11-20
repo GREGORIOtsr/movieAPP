@@ -17,8 +17,9 @@ const objectSchema = {
         required: true
     },
     password: {
-        type: String,
-        required: true
+
+        type: String
+
     },
     profile_pic: {
         type: String,
@@ -42,4 +43,6 @@ const usersSchema = mongoose.Schema(objectSchema);
 
 const User = mongoose.model('User', usersSchema);
 
+
 module.exports = User;
+

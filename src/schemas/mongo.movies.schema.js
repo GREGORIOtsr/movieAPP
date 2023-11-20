@@ -20,7 +20,8 @@ const objectSchema = {
         required: true
     },
     genre: {
-        type: [String], // Array string for one or more genres
+        type: [String],
+
         required: true
     },
     runtime: {
@@ -36,7 +37,9 @@ const objectSchema = {
         // }
     },
     director: {
-        type: String,
+      
+        type: [String],
+      
         required: true
     },
     actors: {
@@ -47,10 +50,12 @@ const objectSchema = {
         ref: 'User',
         required: true
     }
-}
+
+};
 
 const moviesSchema = mongoose.Schema(objectSchema);
 
 const Movie = mongoose.model('Movie', moviesSchema);
 
 module.exports = Movie;
+
