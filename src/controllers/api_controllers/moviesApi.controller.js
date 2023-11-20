@@ -1,6 +1,6 @@
-const apiMovie = require('../services/fetchMovies');
-const Movie = require('../models/movies.model');
-const { createMovie, updateMovie, deleteMovie } = require('../models/movies.model');
+const apiMovie = require('../../services/fetchMovies');
+const Movie = require('../../models/movies.model');
+const { createMovie, updateMovie, deleteMovie } = require('../../models/movies.model');
 
 
 const getMovies = async (req, res) =>{ 

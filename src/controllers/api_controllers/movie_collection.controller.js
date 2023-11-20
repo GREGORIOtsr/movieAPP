@@ -5,7 +5,8 @@ const apiMovie = require('../../services/fetchMovies');
 const getMovies = async (req, res) => {
     try {
         let title= req.params.title
-        const movies = await Movie.find({}, '-_id -__v')
+        let movies = await Movie.find({title: new RegExp(title, 'i')}, '-_id -__v')
+        console.log(title, movies)
 
         if (movies.length === 0) {
         
