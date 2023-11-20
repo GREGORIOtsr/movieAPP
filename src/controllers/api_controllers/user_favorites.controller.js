@@ -20,6 +20,7 @@ const createFav = async (req, res) => {
         });
         res.status(201).json(newFav);
     } catch (error) {
+        res.status(400).json({message: `ERROR: ${error.stack}`});
         
     }
 };
