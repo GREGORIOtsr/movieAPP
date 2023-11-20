@@ -21,6 +21,7 @@ const objectSchema = {
     },
     genre: {
         type: [String],
+
         required: true
     },
     runtime: {
@@ -36,7 +37,9 @@ const objectSchema = {
         // }
     },
     director: {
+      
         type: [String],
+      
         required: true
     },
     actors: {
@@ -47,6 +50,7 @@ const objectSchema = {
         ref: 'User',
         required: true
     }
+
 };
 
 const moviesSchema = mongoose.Schema(objectSchema);
@@ -54,3 +58,4 @@ const moviesSchema = mongoose.Schema(objectSchema);
 const Movie = mongoose.model('Movie', moviesSchema);
 
 module.exports = Movie;
+
