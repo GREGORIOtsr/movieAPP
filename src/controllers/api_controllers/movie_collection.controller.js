@@ -52,12 +52,23 @@ const deleteMovie = async (req, res) => {
     }
 };
 
+const deleteAllMovies = async (req, res) => {
+    try {
+        let userRef = await User.findOne({email: req.body.email});
+        await Movie.deleteMany({createdBy: userRef._id});
+        res.status(200).json({message: `Movies deleted.`});
+    } catch (error) {
+        res.status(400).json({message: `ERROR: ${error.stack}`});
+    }
+};
+
 const controllers = {
     getMovies,
     getMovieByUser,
     createMovie,
     updateMovie,
-    deleteMovie
+    deleteMovie,
+    deleteAllMovies
 };
 
 module.exports = controllers;

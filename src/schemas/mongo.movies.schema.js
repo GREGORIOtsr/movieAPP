@@ -20,7 +20,7 @@ const objectSchema = {
         required: true
     },
     genre: {
-        type: [String], // Array string for one or more genres
+        type: [String],
         required: true
     },
     runtime: {
@@ -47,7 +47,7 @@ const objectSchema = {
         ref: 'User',
         required: true
     }
-}
+};
 
 const moviesSchema = mongoose.Schema(objectSchema);
 
