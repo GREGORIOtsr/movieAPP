@@ -1,18 +1,19 @@
 doctype html
 html
   head
-    title MovieApp
+    title MOVIE APP
     link(rel="stylesheet", href="/style.css")
   body
     header
       section.tituloClaqueta
         img(src="/assets/claqueta.png", alt="claqueta")
         h1 MovieApp
-      button.menu-button Menu
+      button.menu_button
+        img(src="/assets/play.png", alt="play")
         include navBar.pug
   main
-    section 
-      img(src="foto o avatar usuario", alt="foto o avatar usuario")   
+    section#perfilUsuario 
+      img(src="/assets/defaultAvatar.png", alt="avatar usuario")   
       h3 Username: mariaDiana99 
       h3 Email: mariadiananaghiu09@gmail.com
       article
@@ -20,7 +21,7 @@ html
         p review 1
         p review 2
       
-    button Editar mi perfil
+    button#editarPerfil Editar mi perfil
   include footer.pug
 
 
