@@ -34,7 +34,9 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const user = await Users.destroy({ where: {email: req.body.email} });
+        const user = await Users.findOne({ where: {email: req.body.email} });
+        await User_favorites.destroy({ where: {user_id: user.id} });
+        await user.destroy();
         res.status(200).json(user);
     } catch (error) {
         res.status(400).json({message: `ERROR: ${error.stack}`});
