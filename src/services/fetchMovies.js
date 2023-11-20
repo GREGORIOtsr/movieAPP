@@ -25,32 +25,33 @@ const fetchMovie = async (title) => {
     }
 }
 
-module.exports = {fetchMovie};
 
-//fetchMovieDetail
-// const fetchMovieDetail = async (title) => {
+const fetchMovieDetail = async (id) => {
 
-//     if (!title || typeof title !== 'string') {
-//         throw new Error("Invalid title provided");
-//     }
+    if (!id || typeof id !== 'number') {
+        throw new Error("Invalid ID provided");
+    }
     
-//     let encodedTitle = encodeURIComponent(title).replace(/%20/g, '+'); //rellena los espacios con + en vez de %20
-//     const url = `https://api.themoviedb.org/3/movie${encodedTitle}?api_key=${apikey}`;
-//     try {
-//         const response = await fetch(url);
-//         const data = await response.json();
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
 
-//         if  (data.results.length === 0) {
-//             throw new Error("No movies found with the given title");
-//         }
+        if  (!data || Object.keys(data).length === 0) {
+            throw new Error("No movies found with the given ID");
+        }
 
-//        return data;
+       return data;
+
 
         
-//     } catch (error) {
-//         console.error(`ERROR: ${error.stack}`);
-//         throw error; 
-//     }
-// }
+    } catch (error) {
+        console.error(`ERROR: ${error.stack}`);
+        throw error; 
+    }
+}
 
+
+module.exports = {fetchMovie, fetchMovieDetail};
 

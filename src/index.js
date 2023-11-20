@@ -27,7 +27,7 @@ app.use('/dashboardadmin', viewsAdmin);
 app.use('/createmovie', createMovieAdmin);
 app.use('/editmovie', editMovieAdmin);
 
-const viewsUserRoutes = require("./routes/views.user.routes")
+const viewsUserRoutes = require("./routes/viewsUser.routes")
 const authenticationRoutes = require("./routes/authentication.routes")
 
 // Morgan logger

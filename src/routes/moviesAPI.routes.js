@@ -3,6 +3,7 @@ const moviesAPIController = require("../controllers/api_controllers/movie_collec
 const router = express.Router();
 
 router.get('/search/:title', moviesAPIController.getMovies);
+router.get('/detail/:id', moviesAPIController.getMoviesById)
 router.post('/createMovie', moviesAPIController.createMovie);
 router.put('/editMovie/:id', moviesAPIController.updateMovie);
 router.delete('/deleteMovie/:id', moviesAPIController.deleteMovie);

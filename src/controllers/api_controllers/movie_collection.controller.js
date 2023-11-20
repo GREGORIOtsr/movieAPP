@@ -30,6 +30,23 @@ const getMovieByUser = async (req, res) => {
     }
 };
 
+const getMoviesById = async (req, res) => {
+    try {
+        const id = req.params.id; 
+
+        if (!id || isNaN(id)) {
+            return res.status(400).json({ message: "Invalid movie ID" });
+        }
+        
+        const movieDetails = await apiMovie.fetchMovieDetail(parseInt(id));
+        
+        res.status(200).json(movieDetails);
+    } catch (error) {
+        res.status(500).json({ message: `Error fetching movie details: ${error.message}` });
+    }
+};
+
+
 const createMovie = async (req, res) => {
     try{
         const data = req.body;
@@ -73,6 +90,7 @@ const deleteAllMovies = async (req, res) => {
 const controllers = {
     getMovies,
     getMovieByUser,
+    getMoviesById,
     createMovie,
     updateMovie,
     deleteMovie,
