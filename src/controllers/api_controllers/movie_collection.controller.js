@@ -1,9 +1,16 @@
 const User = require('../../schemas/mongo.users.schema');
 const Movie = require('../../schemas/mongo.movies.schema');
+const apiMovie = require('../../services/fetchMovies');
 
 const getMovies = async (req, res) => {
     try {
+        let title= req.params.title
         const movies = await Movie.find({}, '-_id -__v')
+
+        if (movies.length === 0) {
+        
+        movies = await apiMovie.fetchMovie(title)
+    }
         res.status(200).json(movies);
     } catch (error) {
         res.status(400).json({message: `ERROR: ${error.stack}`});

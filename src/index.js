@@ -10,7 +10,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 
-// const moviesAPIRoutes = require("./routes/moviesAPI.routes");
+const moviesAPIRoutes = require("./routes/moviesAPI.routes");
 const usersAPIroutes = require("./routes/usersAPI.routes");
 const favoritesAPIroutes = require("./routes/favoritesAPI.routes");
 const viewsAdmin = require('./routes/dashboardAdmin.routes');
