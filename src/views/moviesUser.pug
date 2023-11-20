@@ -5,12 +5,8 @@ html
   body
     header
       h1 Movies
-      button.dropdown-button Menú
-        ul.dropdown-menu
-          li
-            a(href="ruta para direccionar") Texto de los elementos del menú desplegable
-          li
-            a(href="ruta para direccionar") Texto de los elementos del menú desplegable
+      button.menu-button Menu
+        include navBar.pug
     main
       h2 Mis pelis favs
       section
@@ -24,4 +20,5 @@ html
             img(src="assets", alt="foto pelicula 2")
             p descripción breve película
             button quitar de favs
+    include footer.pug
             

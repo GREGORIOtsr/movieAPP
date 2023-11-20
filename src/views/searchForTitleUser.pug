@@ -5,12 +5,8 @@ html
   body
     header
       h1 Movies
-      button.dropdown-button Menú
-        ul.dropdown-menu
-          li
-            a(href="ruta para direccionar") Texto de los elementos del menú desplegable
-          li
-            a(href="ruta para direccionar") Texto de los elementos del menú desplegable
+      button.menu-button Menu
+        include navBar.pug
     main
       section
         article  
@@ -31,3 +27,5 @@ html
             p duración de la película
             .reseñas
             button añadir a favs
+    include footer.pug
+    
