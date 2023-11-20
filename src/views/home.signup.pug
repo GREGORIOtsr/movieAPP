@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title MovieApp
+  body
+    h1 Sign up
+
+    form(action="/signup", method="post")
+      p Email
+      input(type="email", name="email", required)
+
+      p Password
+      input(type="password", name="password", required)
+
+      p Confirm password
+      input(type="confirmPassword", name="confirmPassword", required)
+
+      button(type="submit") Sign up
+
+
