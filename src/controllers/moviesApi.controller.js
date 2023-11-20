@@ -35,7 +35,7 @@ const postMovie = async  (req, res) => {
 
 const putMovie = async (req, res) => {
     try {
-        const movie = await editUserFavorite(req.params.id, req.body);
+        const movie = await updateMovie(req.params.id, req.body);
         if (!movie) {
             return res.status(404).json({ message: 'Movie not found' });
         }

@@ -1,20 +1,20 @@
 const Movie = require('../schemas/mongo.movies.schema');
 
-const getMovie = async (movieTitle) => {
-    try {
-        if (movieTitle) {
-            const movie = await Movie.findOne({title: movieTitle });
-            if (!movieTitle) {
-                return await Movie.find();
-            }
-            return movie;
-        } else {
-            return await Movie.find();
-        }
-    } catch (error) {
-        throw error;
-    }
-};
+// const getMovie = async (movieTitle) => {
+//     try {
+//         if (movieTitle) {
+//             const movie = await Movie.findOne({title: movieTitle });
+//             if (!movieTitle) {
+//                 return await Movie.find();
+//             }
+//             return movie;
+//         } else {
+//             return await Movie.find();
+//         }
+//     } catch (error) {
+//         throw error;
+//     }
+// };
 
 
 
