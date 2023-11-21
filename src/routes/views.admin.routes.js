@@ -15,7 +15,6 @@ const removeMovie = require("../controllers/removeMovieAdmin.controller");
 router.get('/recoverpassword', login)
 router.get('/restorepassword', login)
 router.delete('/removeMovie', removeMovie)
-router.post('/createMovie', createMovie);
 router.put('/editMovie/:id', editMovie);
 
 //Pendiente el post de logout (router.post('/logout', signup));
