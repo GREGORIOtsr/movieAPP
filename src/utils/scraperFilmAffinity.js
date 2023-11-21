@@ -219,7 +219,7 @@ async function openWebPage() {
         // const algo = console.log(await proReview.evaluate(element => element.innerText))
         // console.log(algo)
         const reviews = await page.$$eval('.pro-review', revs => {
-            return revs.slice(0, 3).map(rev => rev.innerText)
+            return revs.slice(0,3).map(rev => rev.innerText)
         })
         console.log(reviews)
         console.log('Reviews mostradas')
