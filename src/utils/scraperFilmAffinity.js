@@ -181,7 +181,6 @@ const puppeteer = require('puppeteer');
 
 async function openWebPage() {
     try {
-        const reviewData = [];
         const browser = await puppeteer.launch({
             headless: false,
             slowMo: 100,
@@ -201,25 +200,35 @@ async function openWebPage() {
         //   await page.keyboard.press('Enter'); // Enter Key
     
         //Hasta que no esté este selector, no se puede seguir:
-        await page.waitForSelector('img[class=" lazyloaded"]');
+        console.log('Accediendo al enlace...')
+        await page.waitForSelector('a[href="https://www.filmaffinity.com/es/film814379.html"]');
         
         
         //Selector de peli del titanic: class=movie-card-acf select hover
         //Seleccionamos la peli del Titanic y le clickeamos para ir a su página:
-        await page.click('img[class=" lazyloaded"]');
+        console.log('Entrando en la película...')
+        await page.click('a[href="https://www.filmaffinity.com/es/film814379.html"]');
         
         //Seleccionamos la sección de las opiniones:
         //   await page.waitForSelector('ul[id="pro_reviews"]');
         
         //   async function getReviews() {
         // await page.waitForSelector('div[class="pro_reviews"]');
-        reviewData.push(await page.$eval("#pro_reviews", author => author.innerText))
+        console.log('Mostrando las reviews de la película...')
+        // const proReview = await page.$('.pro-review')
+        // const algo = console.log(await proReview.evaluate(element => element.innerText))
+        // console.log(algo)
+        const reviews = await page.$$eval('.pro-review', revs => {
+            return revs.slice(0, 3).map(rev => rev.innerText)
+        })
+        console.log(reviews)
+        console.log('Reviews mostradas')
         
-        console.log(reviewData); 
+        
         //Cerramos el browser para terminar:
         await browser.close();
     } catch (err) {
-        return{error:err}
+        return{"Error":err}
     }
 }
 
