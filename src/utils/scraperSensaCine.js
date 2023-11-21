@@ -1,6 +1,7 @@
+const puppeteer = require('puppeteer');
 //OPCIÓN 1 DE SCRAPEO:
 
-const puppeteer = require('puppeteer');
+// const puppeteer = require('puppeteer');
 
 // async function scrapeFilmaffinity(tituloPelicula) {
 //   const browser = await puppeteer.launch();
@@ -178,7 +179,6 @@ const puppeteer = require('puppeteer');
 
 
 
-
 async function openSensaWebPage() {
     try {
         const browser = await puppeteer.launch({
@@ -187,66 +187,139 @@ async function openSensaWebPage() {
         });
         const page = await browser.newPage();
 
+        // Establecer un tiempo de espera de navegación corto para evitar esperar alertas
         page.setDefaultNavigationTimeout(0);
 
         await page.goto("https://www.sensacine.com/");
 
-
-    
-        //Aceptamos el popup de las cookies:
+        // Aceptamos el popup de las cookies:
         await page.click('button[id="didomi-notice-agree-button"]');
 
-        //Pinchamos en el botón de buscar para que aparezca el input:
+        // Pinchamos en el botón de buscar para que aparezca el input:
         await page.click('div[id="header-main-mobile-btn-search"]');
-    
-        //Selector del input del buscador: "header-search-input"
-        //Seleccionamos el input del buscador y buscamos una película (por ejemplo Titanic)
+
+        // Selector del input del buscador: "header-search-input"
+        // Seleccionamos el input del buscador y buscamos una película (por ejemplo Titanic)
         await page.waitForSelector('input[id="header-search-input"]');
         await page.type('input[id="header-search-input"]', 'Titanic');
 
-        //Presionamos enter
+        // Presionamos enter
         await page.keyboard.press('Enter');
-        
-        //Hasta que no esté este selector, no se puede seguir:
+
+        // Hasta que no esté este selector, no se puede seguir:
         console.log('Accediendo al enlace...')
         await page.waitForSelector('a[href="/peliculas/pelicula-5818/"]');
-        
-        //Seleccionamos la peli del Titanic y le clickeamos para ir a su página:
+
+        // Seleccionamos la peli del Titanic y le clickeamos para ir a su página:
         console.log('Entrando en la película...')
         await page.click('a[href="/peliculas/pelicula-5818/"]');
-        
-        
+
         console.log('Selector de la sección de reviews')
-        await page.waitForSelector('a[href="/peliculas/pelicula-5818/criticas-espectadores/"]');
-        
-        //Seleccionamos la sección de las reviews de usuarios y le clickeamos para ir a su página:
+        await page.waitForSelector('a[href="/peliculas/pelicula-5818/criticas-espectadores/"]', { visible: true, timeout: 5000 });
+
+        // Seleccionamos la sección de las reviews de usuarios y le clickeamos para ir a su página:
         console.log('Entrando en la sección de reviews')
-        await page.click('a[href="/peliculas/pelicula-5818/criticas-espectadores/"]');
+        await page.evaluate(() => {
+            document.querySelector('a[href="/peliculas/pelicula-5818/criticas-espectadores/"]').click();
+          });
+          
+        // await page.click('a[href=""]');
         console.log('Has entrado en la seccion de las reviews de users');
-        
-        // //Seleccionamos la sección de las opiniones:
-        // //   await page.waitForSelector('ul[id="pro_reviews"]');
-        
-        // //   async function getReviews() {
-        // // await page.waitForSelector('div[class="pro_reviews"]');
-        // console.log('Mostrando las reviews de la película...')
-        // // const proReview = await page.$('.pro-review')
-        // // const algo = console.log(await proReview.evaluate(element => element.innerText))
-        // // console.log(algo)
+
+        // Esperar a que se carguen las reviews
+        await page.waitForSelector('.content-txt.review-card-content');
+
+        // Obtener las primeras tres reviews
         let reviews = await page.$$eval('.content-txt.review-card-content', revs => {
-             return revs.slice(0,3).map(rev => rev.innerText)
-        })
+            return revs.slice(0, 3).map(rev => rev.innerText)
+        });
+
         console.log(reviews)
         console.log('Reviews mostradas')
-        
+
+        // Restablecer el tiempo de espera de navegación a su valor predeterminado
         page.setDefaultNavigationTimeout(30000);
 
-        //Cerramos el browser para terminar:
+        // Cerramos el navegador para terminar:
         await browser.close();
     } catch (err) {
-        return{"Error":err}
+        // Lanzar el error para que se muestre el rastreo completo en la consola
+        throw err;
     }
 }
 
 openSensaWebPage();
+
+
+
+// async function openSensaWebPage() {
+//     try {
+//         const browser = await puppeteer.launch({
+//             headless: false,
+//             slowMo: 40,
+//         });
+//         const page = await browser.newPage();
+
+//         page.setDefaultNavigationTimeout(0);
+
+//         await page.goto("https://www.sensacine.com/");
+
+
+    
+//         //Aceptamos el popup de las cookies:
+//         await page.click('button[id="didomi-notice-agree-button"]');
+
+//         //Pinchamos en el botón de buscar para que aparezca el input:
+//         await page.click('div[id="header-main-mobile-btn-search"]');
+    
+//         //Selector del input del buscador: "header-search-input"
+//         //Seleccionamos el input del buscador y buscamos una película (por ejemplo Titanic)
+//         await page.waitForSelector('input[id="header-search-input"]');
+//         await page.type('input[id="header-search-input"]', 'Titanic');
+
+//         //Presionamos enter
+//         await page.keyboard.press('Enter');
+        
+//         //Hasta que no esté este selector, no se puede seguir:
+//         console.log('Accediendo al enlace...')
+//         await page.waitForSelector('a[href="/peliculas/pelicula-5818/"]');
+        
+//         //Seleccionamos la peli del Titanic y le clickeamos para ir a su página:
+//         console.log('Entrando en la película...')
+//         await page.click('a[href="/peliculas/pelicula-5818/"]');
+        
+        
+//         console.log('Selector de la sección de reviews')
+//         await page.waitForSelector('a[href="/peliculas/pelicula-5818/criticas-espectadores/"]');
+        
+//         //Seleccionamos la sección de las reviews de usuarios y le clickeamos para ir a su página:
+//         console.log('Entrando en la sección de reviews')
+//         await page.click('a[href="/peliculas/pelicula-5818/criticas-espectadores/"]');
+//         console.log('Has entrado en la seccion de las reviews de users');
+        
+//         // //Seleccionamos la sección de las opiniones:
+//         // //   await page.waitForSelector('ul[id="pro_reviews"]');
+        
+//         // //   async function getReviews() {
+//         // // await page.waitForSelector('div[class="pro_reviews"]');
+//         // console.log('Mostrando las reviews de la película...')
+//         // // const proReview = await page.$('.pro-review')
+//         // // const algo = console.log(await proReview.evaluate(element => element.innerText))
+//         // // console.log(algo)
+//         let reviews = await page.$$eval('.content-txt.review-card-content', revs => {
+//              return revs.slice(0,3).map(rev => rev.innerText)
+//         })
+//         console.log(reviews)
+//         console.log('Reviews mostradas')
+        
+//         page.setDefaultNavigationTimeout(30000);
+
+//         //Cerramos el browser para terminar:
+//         await browser.close();
+//     } catch (err) {
+//         return{"Error":err}
+//     }
+// }
+
+// openSensaWebPage();
 
