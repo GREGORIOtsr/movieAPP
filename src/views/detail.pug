@@ -1,27 +1,37 @@
 doctype html
 html
   head
-    title #{movieDetails.title || 'Movie Details'}
+    title= movieDetails.title || 'Movie Details'
   body
     header
 
     main
-      h1 #{movieDetails.title || 'Movie Title'}
-      button(type="button" class=".button-favorite") Add Fav  
+      h1= movieDetails.title || 'Movie Title'
+      button(type="button" class="button-favorite") Add to Favorites
       if movieDetails.poster_path
         img(src="https://image.tmdb.org/t/p/w500" + movieDetails.poster_path, alt=movieDetails.title + ' poster')
       else
         p Poster not available
-
       if movieDetails.release_date
-        h2 Release Date: #{movieDetails.release_date}
+        h2 Release Date
+        p= movieDetails.release_date
       if movieDetails.genres && movieDetails.genres.length
-        p Genre: #{movieDetails.genres.map(genre => genre.name).join(', ')}
+        h2 Genre
+        p= movieDetails.genres.map(genre => genre.name).join(', ')
       if movieDetails.runtime
-        p Duration: #{movieDetails.runtime + ' minutes'}
+        h2 Duration
+        p= movieDetails.runtime + ' minutes'
       if movieDetails.overview
-        p Synopsis: #{movieDetails.overview}
+        h2 Synopsis
+        p= movieDetails.overview
       if movieDetails.vote_average
         h2 Rating
-        p #{movieDetails.vote_average} / 10
-    script(src='/script.js')
+        p= movieDetails.vote_average + ' / 10'
+      if directors && directors.length
+        h2 Director(s)
+        p= directors.map(director => director.name).join(', ')
+      if actors && actors.length
+        h2 Cast
+        ul
+          each actor in actors
+            li= actor.name + ' as ' + actor.character

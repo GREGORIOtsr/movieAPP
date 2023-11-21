@@ -49,7 +49,7 @@ const fetchCredits = async (id) => {
     throw new Error("Invalid ID provided");
   }
 
-  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}`;
+  const url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apikey}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
