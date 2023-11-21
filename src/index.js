@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 app.use(express.json())
 const port = process.env.PORT || 3000;
+const scraperSensaCine = require('../utils/scraperSensaCine.js')
+const scraperFilmAffinity = require('../utils/scraperFilmAffinity.js')
 
 // Se indica el directorio donde se almacenarán las plantillas 
 app.set('views', './views');
