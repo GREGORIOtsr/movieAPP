@@ -46,6 +46,7 @@ header {
     margin-left: 12px;
     background: linear-gradient(45deg, #18b8dc, #7ec8a0);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
