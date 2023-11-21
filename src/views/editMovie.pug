@@ -16,30 +16,30 @@ html
       form(action="" method="POST" class="formEdit")
         fieldset 
           p Title 
-          input( class="inputEdit" type="text" name="title")
+          input( class="inputEdit" type="text" name="title" required)
         fieldset 
-          p Genres 
-          input( class="inputEdit" type="text" name="genres")
-        fieldset 
+         fieldset 
           p Date 
-          input( class="inputEdit" type="text" name="date")
+          input( class="inputEdit" type="text" name="date" required)
+          p Genres 
+          input( class="inputEdit" type="text" name="genre" required)
         fieldset 
           p Poster 
-          input( class="inputEdit" type="file" name="poster")
+          input( class="inputEdit" type="file" name="poster" required)
         fieldset 
           p Runtime
-          input( class="inputEdit" type="text" name="runtime")
+          input( class="inputEdit" type="text" name="runtime" required)
         fieldset 
           p Synopsis 
-          textarea( class="inputEdit" rows="4" cols="50" name="synopsis")
+          textarea( class="inputEdit" rows="4" cols="50" name="synopsis" required)
         fieldset 
           p Director
-          input( class="inputEdit" type="text" name= "director")
+          input( class="inputEdit" type="text" name= "director" required)
         fieldset 
           p Actors
-          input( class="inputCreate" type="text" name="actors")
-          fieldset 
-            p Edited by
-            input(class="inputCreate" type="text" name="email")
+          input( class="inputEdit" type="text" name="actors" required)
+        fieldset 
+          p Edited by
+          input(class="inputEdit" type="text" name="email" required)
         button(type="submit") Edit
   script(src='/editMovie.js') 

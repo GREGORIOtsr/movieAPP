@@ -23,6 +23,7 @@ formCreate.addEventListener('submit', async (event) => {
     .then((data) => {
       if (data.message === 'Movie created.') {
         alert('Movie created successfully!');
+        document.querySelector('.formCreate').reset()
       } else {
         alert('Error creating movie: ' + data.msj);
       }
