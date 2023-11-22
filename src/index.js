@@ -79,7 +79,8 @@ const morgan = require('./middlewares/morgan');
 
 app.use('/', viewsUserRoutes);
 app.use('/', viewsAdminRoutes)
-app.use('/', authenticationRoutes);
+
+
 
 
 
