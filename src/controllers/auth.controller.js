@@ -45,7 +45,7 @@ const loginUser = async (req, res) => {
             res
               .cookie("access-token", token, {
                 httpOnly: true,
-                sameSite: "strict",
+                sameSite: "strict"
               })
               .redirect("/dashboard");
           } else {
@@ -101,7 +101,6 @@ const googleAuth = async (req, res) => {
 
 const signOut = async (req, res) => {
   try {
-    console.log(req.cookies.email);
     await User.findOneAndUpdate(
       { email: req.cookies.email },
       { logged: false }
@@ -111,8 +110,7 @@ const signOut = async (req, res) => {
         return next(err);
       }
       req.session.destroy();
-      res.clearCookie("access-token").send({ message: "User logged out" });
-      // res.clearCookie("access-token").redirect("/login");
+      res.clearCookie("access-token").redirect("/login");
     });
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });

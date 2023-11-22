@@ -1,5 +1,6 @@
 const Users = require('../schemas/sql.users.schema');
 const User_favorites = require('../schemas/sql.user_favorites.schema');
+require('../../schemas/sql_associations');
 
 const getUser = async (req, res) => {
     try {
