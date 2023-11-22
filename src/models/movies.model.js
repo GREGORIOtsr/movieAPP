@@ -17,7 +17,6 @@ const getMovie = async (movieTitle) => {
 };
 
 
-
 async function createMovie(movieData) {
     try {
         const movie = new Movie(movieData);
