@@ -2,32 +2,34 @@ doctype html
 html
   head
     title MovieApp
+    link(rel="stylesheet", href="/style.css")
   body
     header
-      h1 Movies
-      button.dropdown-button Menú
-        ul.dropdown-menu
-          li
-            a(href="ruta para direccionar") Texto de los elementos del menú desplegable
-          li
-            a(href="ruta para direccionar") Texto de los elementos del menú desplegable
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+      button.menu_button
+        img(src="/assets/play.png", alt="play")
+        include navBar.pug
     main
-      section
-        article  
-            h2 Pelicula 1
-            img(src="assets", alt="foto pelicula 1")
-            p descripción vista de detalle película
-            p año de publicación 
-            p género 
-            p duración de la película
+      section#vistaDetallePelis
+        article.peliculaDetalles  
+            h2.tituloPelicula Pelicula 1
+            img.posterPelicula(src="assets", alt="foto pelicula 1")
+            p.sinopsisPelicula descripción vista de detalle película
+            p.fechaPelicula año de publicación 
+            p.generosPelicula género 
+            p.duracionPelicula duración de la película
             .reseñas
-            button añadir a favs
-        article  
-            h2 Pelicula 2
-            img(src="assets", alt="foto pelicula 2")
-            p descripción vista de detalle película
-            p año de publicación 
-            p género 
-            p duración de la película
+            button.añadirAFavs añadir a favs
+        article.peliculaDetalles  
+            h2.tituloPelicula Pelicula 2
+            img.posterPelicula(src="assets", alt="foto pelicula 2")
+            p.sinopsisPelicula descripción vista de detalle película
+            p.fechaPelicula año de publicación 
+            p.generosPelicula género 
+            p.duracionPelicula duración de la película
             .reseñas
-            button añadir a favs
+            button.añadirAFavs añadir a favs
+    include footer.pug
+    
