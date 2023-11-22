@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json())
 const port = process.env.PORT || 3000;
+const helmet = require('helmet')
 
 // Se indica el directorio donde se almacenarán las plantillas 
 app.set('views', './views');
@@ -9,6 +10,8 @@ app.set('views', './views');
 // Se indica el motor del plantillas a utilizar
 app.set('view engine', 'pug');
 app.use(express.static('public'))
+app.use(helmet());
+
 
 const moviesAPIRoutes = require("./routes/moviesAPI.routes");
 const usersAPIroutes = require("./routes/usersAPI.routes");

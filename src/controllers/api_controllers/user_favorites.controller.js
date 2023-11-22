@@ -1,5 +1,5 @@
-const Users = require('../schemas/sql.users.schema');
-const User_favorites = require('../schemas/sql.user_favorites.schema');
+const Users = require('../../schemas/sql.users.schema');
+const User_favorites = require('../../schemas/sql.user_favorites.schema');
 
 const getFavs = async (req, res) => {
     try {
