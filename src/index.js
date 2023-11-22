@@ -63,7 +63,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
 app.use('/', authRoute);
 
 //Rutas API
-// app.use('/api', moviesAPIRoutes);
+app.use('/api', moviesAPIRoutes);
 app.use('/api', usersAPIroutes);
 app.use('/api', favoritesAPIroutes);
 

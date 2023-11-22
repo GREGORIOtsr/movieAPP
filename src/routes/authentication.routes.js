@@ -10,7 +10,7 @@ const auth = require('../controllers/auth.controller');
 
 router.get('/signup', signup.homeSignup);
 router.post('/signup', auth.signUpUser);
-router.get('/login', login.gethomeLogin);
+router.get('/', login.gethomeLogin);
 router.post('/login', auth.loginUser);
 router.get('/logout', auth.signOut);
 
