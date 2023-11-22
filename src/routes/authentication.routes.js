@@ -6,7 +6,7 @@ const login = require("../controllers/controllers.views/login.controller");
 const signup = require("../controllers/controllers.views/signup.controller");
 
 
-// router.post('/signup', signup);
-// router.post('/login', login);
+router.get('/signup', signup.homeSignup);
+router.get('/login', login.gethomeLogin);
 
 module.exports = router

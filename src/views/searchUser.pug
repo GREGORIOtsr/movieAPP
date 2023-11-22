@@ -2,7 +2,6 @@ doctype html
 html
   head
     title MovieApp
-
     link(rel="stylesheet" href="/style.css")
   body
     header
@@ -13,11 +12,10 @@ html
         img(src="/assets/play.png" alt="play")
         include navBar.pug
     main
-      main
-    form(action="" method="") 
-      input(type="text" placeholder="Find movies" name="title" required)
-      button(id="search-button" type="submit") Search
-      p Find any movie you want! 
+      form(action="" method="GET") 
+        input(type="text" placeholder="Find movies" name="title" required)
+        button(id="search-button" type="submit") Search
+        p Find any movie you want! 
       section#containerPelicula
     script(src='/searchMovie.js')
     include footer.pug

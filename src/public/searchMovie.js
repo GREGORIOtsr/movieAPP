@@ -24,14 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           detailLink = `/detail/${movie.id}`;
         }
-        
+
         container.innerHTML += `
         <div>
-         <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt='movie poster'>
+         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt='movie poster'>
           <p>${movie.title}</p>
           <a href="${detailLink}">See more details</a>
         </div>
-      `;
+      `
+      console.log(movie.poster_path);
       }
     } else {
       alert("Error al buscar películas");

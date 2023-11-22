@@ -2,14 +2,16 @@ doctype html
 html
   head
     title MovieApp
+    link(rel="stylesheet" href="/style.css")
+
   body
     header
       h1 MovieApp
   section.tituloClaqueta
-        img(src="/assets/claqueta.png", alt="claqueta")
-        h1 MovieApp
+    img(src="/assets/claqueta.png" alt="claqueta")
+    h1 MovieApp
       button.menu_button
-        img(src="/assets/play.png", alt="play")
+        img(src="/assets/play.png" alt="play")
         include navBarAdmin.pug
   main
     h2 Edit Movie
@@ -18,11 +20,11 @@ html
           p Title 
           input( class="inputEdit" type="text" name="title" required)
         fieldset 
-         fieldset 
-          p Date 
-          input( class="inputEdit" type="text" name="date" required)
-          p Genres 
-          input( class="inputEdit" type="text" name="genre" required)
+          fieldset 
+            p Date 
+            input( class="inputEdit" type="text" name="date" required)
+            p Genres 
+            input( class="inputEdit" type="text" name="genre" required)
         fieldset 
           p Poster 
           input( class="inputEdit" type="file" name="poster" required)
