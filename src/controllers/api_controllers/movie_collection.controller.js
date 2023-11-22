@@ -4,14 +4,16 @@ const apiMovie = require('../../services/fetchMovies');
 
 const getMovies = async (req, res) => {
     try {
-        let title= req.params.title
-        let movies = await Movie.find({title: new RegExp(title, 'i')}, '-_id -__v')
-        console.log(title, movies)
+        let title = req.params.title;
+        title = title.substring(1);
+        let movies = await Movie.find({title: new RegExp(title, 'i')}, '-_id -__v');
+        console.log('Buscando en la base de datos por título:', title, 'Resultados:', movies);
 
         if (movies.length === 0) {
-        
-        movies = await apiMovie.fetchMovie(title)
-    }
+            console.log('No se encontraron películas en la base de datos, buscando a través de la API');
+            movies = await apiMovie.fetchMovie(title);
+            console.log('Resultados de la API:', movies);
+        }
         res.status(200).json(movies);
     } catch (error) {
         res.status(400).json({message: `ERROR: ${error.stack}`});
@@ -29,6 +31,23 @@ const getMovieByUser = async (req, res) => {
         res.status(400).json({message: `ERROR: ${error.stack}`});
     }
 };
+
+const getMoviesById = async (req, res) => {
+    try {
+        const id = req.params.id; 
+
+        if (!id || isNaN(id)) {
+            return res.status(400).json({ message: "Invalid movie ID" });
+        }
+        
+        const movieDetails = await apiMovie.fetchMovieDetail(parseInt(id));
+        
+        res.status(200).json(movieDetails);
+    } catch (error) {
+        res.status(500).json({ message: `Error fetching movie details: ${error.message}` });
+    }
+};
+
 
 const createMovie = async (req, res) => {
     try{
@@ -73,6 +92,7 @@ const deleteAllMovies = async (req, res) => {
 const controllers = {
     getMovies,
     getMovieByUser,
+    getMoviesById,
     createMovie,
     updateMovie,
     deleteMovie,

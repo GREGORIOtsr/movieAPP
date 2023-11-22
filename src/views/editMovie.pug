@@ -12,30 +12,34 @@ html
           li
             a(href="ruta para direccionar") Texto de los elementos del menú desplegable
   main
-    h2 Editar película
-    form(action="")
+    h2 Edit Movie
+      form(action="" method="POST" class="formEdit")
         fieldset 
-            p título 
-            input(type="text")
+          p Title 
+          input( class="inputEdit" type="text" name="title" required)
         fieldset 
-            p géneros 
-            input(type="text")
+         fieldset 
+          p Date 
+          input( class="inputEdit" type="text" name="date" required)
+          p Genres 
+          input( class="inputEdit" type="text" name="genre" required)
         fieldset 
-            p imagen 
-            input(type="file")
+          p Poster 
+          input( class="inputEdit" type="file" name="poster" required)
         fieldset 
-            p duración
-            input(type="text")
+          p Runtime
+          input( class="inputEdit" type="text" name="runtime" required)
         fieldset 
-            p sinopsis 
-            input(type="text")
+          p Synopsis 
+          textarea( class="inputEdit" rows="4" cols="50" name="synopsis" required)
         fieldset 
-            p director
-            input(type="text")
+          p Director
+          input( class="inputEdit" type="text" name= "director" required)
         fieldset 
-            p actores
-            input(type="text")
+          p Actors
+          input( class="inputEdit" type="text" name="actors" required)
         fieldset 
-            p puntuación
-            input(type="text")
-        button(type="submit") Editar
+          p Edited by
+          input(class="inputEdit" type="text" name="email" required)
+        button(type="submit") Edit
+  script(src='/editMovie.js') 

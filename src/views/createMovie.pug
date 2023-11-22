@@ -9,34 +9,39 @@ html
         ul.dropdown-menu
           li
             a(href="ruta para direccionar") Texto de los elementos del menú desplegable
-          li
+          li 
             a(href="ruta para direccionar") Texto de los elementos del menú desplegable
   main
-    h2 Crear película
-    form(action="")
+    h2 Create Movie
+    form(action="" method="POST" class="formCreate")
         fieldset 
-            p título 
-            input(type="text")
+            p Title 
+            input( class="inputCreate" type="text" name="title" required)
         fieldset 
-            p géneros 
-            input(type="text")
+            p Date 
+            input( class="inputCreate" type="text" name="date")
         fieldset 
-            p imagen 
-            input(type="file")
+            p Genre 
+            input( class="inputCreate" type="text" name="genre")
         fieldset 
-            p duración
-            input(type="text")
+            p Poster 
+            input( class="inputCreate" type="file" name="poster")
         fieldset 
-            p sinopsis 
-            input(type="text")
+            p Runtime
+            input( class="inputCreate" type="text" name="runtime")
         fieldset 
-            p director
-            input(type="text")
+            p Synopsis 
+            textarea( class="inputCreate" rows="4" cols="50" name="synopsis")
         fieldset 
-            p actores
-            input(type="text")
+            p Director
+            input( class="inputCreate" type="text" name= "director")
         fieldset 
-            p puntuación
-            input(type="text")
-        button(type="submit") Crear
+            p Actors
+            input( class="inputCreate" type="text" name="actors")
+        fieldset 
+            p Created by
+            input( class="inputCreate" type="text" name="email")
+
+        button(type="submit") Create
+  script(src='/createMovie.js')
     
