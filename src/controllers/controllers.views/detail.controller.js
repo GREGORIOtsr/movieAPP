@@ -9,9 +9,7 @@ const getDetail = async (req, res) => {
         }
 
         const movieDetails = await apiMovie.fetchMovieDetail(parseInt(id));
-        const movieCredits = await apiMovie.fetchCredits(parseInt(id));
-        console.log(movieCredits)
-    
+        const movieCredits = await apiMovie.fetchCredits(parseInt(id));    
 
         if (!movieDetails) {
             return res.status(404).send("Movie not found");

@@ -24,3 +24,11 @@ button.addEventListener("click", () => {
       console.log(error);
     });
 });
+
+
+
+function addFavorite(movieId) {
+  const userId = req.user.id;
+
+  favoritesAPIController.createFav(userId, movieId);
+}

@@ -12,7 +12,7 @@ const getMovies = async (req, res) => {
         if (movies.length === 0) {
             console.log('No se encontraron películas en la base de datos, buscando a través de la API');
             movies = await apiMovie.fetchMovie(title);
-            console.log('Resultados de la API:', movies);
+            console.log('Resultados de la API')
         }
         res.status(200).json(movies);
     } catch (error) {

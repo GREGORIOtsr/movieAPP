@@ -2,10 +2,15 @@ doctype html
 html
   head
     title MovieApp
+    link(rel="stylesheet", href="/style.css")
   body
     header
       h1 MovieApp
-      button.menu-button Menu
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+      button.menu_button
+        img(src="/assets/play.png", alt="play")
         include navBar.pug
   main
      button(type="button") Search for a movie

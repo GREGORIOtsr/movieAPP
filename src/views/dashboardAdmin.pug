@@ -2,33 +2,36 @@ doctype html
 html
   head
     title MovieApp
+    link(rel="stylesheet" href="/style.css")
   body
     header
       h1 MovieApp
-      button.dropdown-button Menú
-        ul.dropdown-menu
-          li
-            a(href="ruta para direccionar") Buscar
-          li
-            a(href="ruta para direccionar") Mis pelis
+        section.tituloClaqueta
+          img(src="/assets/claqueta.png" alt="claqueta")
+          h1 MovieApp
+      button.menu_button
+        img(src="/assets/play.png" alt="play")
+        include navBarAdmin.pug
   main
     section.perfil 
-      img(src="foto o avatar usuario", alt="foto o avatar usuario")   
+      img(src="foto o avatar usuario" alt="foto o avatar usuario")   
       h3 Username: mariaDiana99 
       h3 Email: mariadiananaghiu09@gmail.com
-      
+
     button Editar mi perfil
     section
       article  
-            h2 Pelicula 1
-            img(src="assets", alt="foto pelicula 1")
-            p descripción breve película
-            button quitar de favs
+        h2 Pelicula 1
+        img(src="assets" alt="foto pelicula 1")
+        p descripción breve película
+        button quitar de favs
         article  
-            h2 Pelicula 2
-            img(src="assets", alt="foto pelicula 2")
-            p descripción breve película
-        
+          h2 Pelicula 2
+          img(src="assets" alt="foto pelicula 2")
+          p descripción breve película
+    include footer.pug
 
 
-    
+
+
+

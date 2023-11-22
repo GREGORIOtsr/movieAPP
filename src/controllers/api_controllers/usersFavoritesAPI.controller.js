@@ -1,5 +1,5 @@
 const express = require("express");
-const Favorites = require("../models/favorites.model");
+const Favorites = require("../../models/favorites.model");
 
 const postFavorite = async (req, res) => {
     try {
