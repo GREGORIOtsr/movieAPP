@@ -4,10 +4,9 @@ const router = express.Router();
 require('../config/jwt.config')(passport);
 
 //Rutas únicas de autenticación
-const login = require("../controllers/controllers.views/login.controller");
-const signup = require("../controllers/controllers.views/signup.controller");
+const signup =require('../controllers/controllers.views/signup.controller')
+const login = require('../controllers/controllers.views/login.controller')
 const auth = require('../controllers/auth.controller');
-
 
 router.get('/signup', signup.homeSignup);
 router.post('/signup', auth.signUpUser);
