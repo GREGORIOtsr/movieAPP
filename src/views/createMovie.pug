@@ -5,16 +5,15 @@ html
     link(rel="stylesheet", href="/style.css")
   body
     header
-      h1 MovieApp
-       section.tituloClaqueta
+      section.tituloClaqueta
         img(src="/assets/claqueta.png", alt="claqueta")
         h1 MovieApp
       button.menu_button
         img(src="/assets/play.png", alt="play")
-        include navBarAdmin.pug
+        include navBarAdmin.pug 
   main
     h2 Create Movie
-    form(action="" method="POST" class="formCreate")
+    form#createMovie(action="" method="POST")
         fieldset 
             p Title 
             input( class="inputCreate" type="text" name="title" required)
@@ -43,8 +42,8 @@ html
             p Created by
             input( class="inputCreate" type="text" name="email")
 
-        button(type="submit") Create
+        button#createButton(type="submit") Create
   script(src='/createMovie.js')
-    include footer.pug
+  include footer.pug
 
     

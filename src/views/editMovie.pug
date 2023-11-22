@@ -6,16 +6,15 @@ html
 
   body
     header
-      h1 MovieApp
-  section.tituloClaqueta
-    img(src="/assets/claqueta.png" alt="claqueta")
-    h1 MovieApp
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
       button.menu_button
-        img(src="/assets/play.png" alt="play")
+        img(src="/assets/play.png", alt="play")
         include navBarAdmin.pug
   main
     h2 Edit Movie
-      form(action="" method="POST" class="formEdit")
+      form#editMovie(action="" method="POST")
         fieldset 
           p Title 
           input( class="inputEdit" type="text" name="title" required)
@@ -43,6 +42,7 @@ html
         fieldset 
           p Edited by
           input(class="inputEdit" type="text" name="email" required)
-        button(type="submit") Edit
+
+        button#editButton(type="submit") Edit
   script(src='/editMovie.js') 
-    include footer.pug
+  include footer.pug
