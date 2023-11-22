@@ -2,23 +2,22 @@ doctype html
 html
   head
     title MovieApp
-    
-    link(rel="stylesheet", href="/style.css")
 
+    link(rel="stylesheet" href="/style.css")
   body
     header
       section.tituloClaqueta
-        img(src="/assets/claqueta.png", alt="claqueta")
+        img(src="/assets/claqueta.png" alt="claqueta")
         h1 MovieApp
       button.menu_button
-        img(src="/assets/play.png", alt="play")
+        img(src="/assets/play.png" alt="play")
         include navBar.pug
     main
-         main
-    form(action="", method="") 
+      main
+    form(action="" method="") 
       input(type="text" placeholder="Find movies" name="title" required)
       button(id="search-button" type="submit") Search
       p Find any movie you want! 
       section#containerPelicula
-  script(src='/searchMovie.js')
-      
+    script(src='/searchMovie.js')
+    include footer.pug
