@@ -183,12 +183,9 @@ async function openSensaWebPage() {
     try {
         const browser = await puppeteer.launch({
             headless: false,
-            slowMo: 40,
+            slowMo: 150,
         });
         const page = await browser.newPage();
-
-        // Establecer un tiempo de espera de navegación corto para evitar esperar alertas
-        page.setDefaultNavigationTimeout(0);
 
         await page.goto("https://www.sensacine.com/");
 
@@ -210,7 +207,7 @@ async function openSensaWebPage() {
         console.log('Accediendo al enlace...')
         await page.waitForSelector('a[href="/peliculas/pelicula-5818/"]');
 
-        // Seleccionamos la peli del Titanic y le clickeamos para ir a su página:
+        // // Seleccionamos la peli del Titanic y le clickeamos para ir a su página:
         console.log('Entrando en la película...')
         await page.click('a[href="/peliculas/pelicula-5818/"]');
 
@@ -236,9 +233,6 @@ async function openSensaWebPage() {
 
         console.log(reviews)
         console.log('Reviews mostradas')
-
-        // Restablecer el tiempo de espera de navegación a su valor predeterminado
-        page.setDefaultNavigationTimeout(30000);
 
         // Cerramos el navegador para terminar:
         await browser.close();
@@ -322,4 +316,6 @@ openSensaWebPage();
 // }
 
 // openSensaWebPage();
+
+
 
