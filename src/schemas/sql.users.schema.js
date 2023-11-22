@@ -17,13 +17,13 @@ const Users = db.define(
       type: DataTypes.STRING(40),
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail(value) {
-          if (!regex.email.test(value)) {
-            throw new Error("Invalid Email format!");
-          }
-        },
-      }
+      // validate: {
+      //   isEmail(value) {
+      //     if (!regex.email.test(value)) {
+      //       throw new Error("Invalid Email format!");
+      //     }
+      //   },
+      // }
     },
   },
   {
