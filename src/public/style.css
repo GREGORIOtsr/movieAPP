@@ -1,0 +1,219 @@
+/* Paleta de colores: 
+- Gris casi negro => #212B30
+- Gris oscuro => #45555F
+- Gris clarito => #858585
+- Azul clarito => #18B8DC
+- Verde clarito => #7EC8A0
+*/
+
+/* Fonts que se van a utilizar: */
+@font-face {
+    font-family: "howToDoSomething";
+    src: url("/fonts/HoW\ tO\ dO\ SoMeThInG.ttf");
+}
+
+
+body {
+    background-color: #b3e7eb;
+}
+
+/* ESTILOS userProfile PAGE: */
+header {
+    display: flex;
+    background-color: #45555F;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 7px 20px 7px;
+    align-items: center;
+    margin-bottom: 42px;
+}
+
+.tituloClaqueta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: x-large;
+}
+
+.tituloClaqueta img {
+    width: 100px;
+    margin-left: 25px;
+}
+
+.tituloClaqueta h1 {
+    font-family: "howToDoSomething";
+    font-size: 75px;
+    margin-left: 12px;
+    background: linear-gradient(45deg, #18b8dc, #7ec8a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+/* Estilos NavBar: */
+.menu_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu_button img {
+    width: 66px;
+    height: 66px;
+    background-color: #00d0ff;
+    border-radius: 63px;
+    padding: 2px;
+    margin-right: 60px;
+}
+ .listaNavBar {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    margin-right: 100px;
+    font-size: x-large;
+    text-align: center;
+}
+
+.listaNavBar a {
+    text-decoration: none;
+    color: #00d0ff;
+} 
+
+/* Estilos main => dashboard perfil usuario: */
+#perfilUsuario {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    border: 4px solid #45555f;
+    border-radius: 68px;
+    max-width: 850px;
+    margin-bottom: 40px;
+    font-size: x-large;
+}
+
+#perfilUsuario img {
+    width: 113px;
+    height: 128px;
+    background-color: #a8b6c2;
+    border-radius: 88px;
+    padding: 12px;
+    margin-top: 22px;
+}
+
+/* Estilos main part => movies page: */
+#pelisFavsTitulo{
+    text-align: center;
+    font-size: xxx-large;
+}
+#pelisFavs{
+    border: 4px solid #45555f;
+    border-radius: 68px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 12px;
+}
+.peliFav{
+    border: 1px solid black;
+    border-radius: 120px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 26px;
+    margin-bottom: 25px;
+    height: 520px;
+}
+.peliFav h2{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+.peliFav img{
+    width: 155px;
+    margin: 0 auto;
+    display: flex;
+}
+.peliFav p{
+    margin: 0 auto;
+    margin-top: 32px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 45px;
+    font-size: x-large;
+    text-align: center;
+}
+.peliFav button{
+    display: flex;
+    margin: 0 auto;
+    font-size: xx-large;
+    background-color: #212b30;
+    color: #7ec8a0;
+    padding: 6px 14px;
+    border: 1px solid #7ec8a0;
+    border-radius: 32px;
+}
+
+/* Estilos main part => search page: */
+.buscadorPeli{
+    border: 4px solid #45555f;
+    border-radius: 68px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 12px;
+    height: 262px;
+    text-align: center;
+}
+.buscadorPeli p{
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+.buscadorPeli input{
+    padding: 10px 66px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 45px;
+    margin-bottom: 30px;
+    font-size: x-large;
+    background-color: #bffada;
+    color: #212b30;
+}
+.buscadorPeli button{
+    padding: 14px 33px;
+    font-size: x-large;
+    background-color: #7ec8a0;
+    color: #45555f;
+    border: 2px solid #212b30;
+    border-radius: 100px;
+}
+
+#editarPerfil {
+    display: flex;
+    margin: 0 auto;
+    font-size: 32px;
+    padding: 15px 38px 15px 38px;
+    background-color: #7ec8a0;
+    color: #45555f;
+    border-radius: 100px;
+    border: 2px solid #212b30;
+}
+
+/* Estilos footer: */
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #212B30;
+    padding: 28px 3px 28px 3px;
+    color: #7EC8A0;
+    margin-top: 26px;
+}
+
+.footer a img {
+    width: 88px;
+    height: 88px;
+    background-color: aliceblue;
+    border-radius: 50px;
+    padding: 2px;
+}
