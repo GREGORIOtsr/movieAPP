@@ -44,8 +44,17 @@ app.set('views', './views');
 // Se indica el motor del plantillas a utilizar
 app.set('view engine', 'pug');
 app.use(express.static('public'))
-app.use(helmet());
-
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https:", "data:"],
+      "frame-src": ["'self'", "https://www.youtube.com", "https://youtube.com"],
+      "script-src": ["'self'", "https://www.youtube.com", "https://s.ytimg.com"],
+      "child-src": ["'self'", "https://www.youtube.com", "https://youtube.com"] // si estás usando iframes para YouTube
+    }
+  })
+);
 const moviesAPIRoutes = require("./routes/moviesAPI.routes");
 const usersAPIroutes = require("./routes/usersAPI.routes");
 const favoritesAPIroutes = require("./routes/favoritesAPI.routes");
@@ -68,19 +77,13 @@ app.use('/api', usersAPIroutes);
 app.use('/api', favoritesAPIroutes);
 
 //Rutas views
-// app.use('/dashboardadmin', viewsAdmin);
+app.use('/', viewsUserRoutes);
+app.use('/', viewsAdminRoutes)
 
 
 
 // Morgan logger
 const morgan = require('./middlewares/morgan');
-
-
-
-app.use('/', viewsUserRoutes);
-app.use('/', viewsAdminRoutes)
-
-
 
 
 

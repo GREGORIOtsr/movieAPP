@@ -48,6 +48,25 @@ const getMoviesById = async (req, res) => {
     }
 };
 
+const getCreditsById = async (req, res) => {
+    try {
+        const id = req.params.id; 
+
+        if (!id || isNaN(id)) {
+            return res.status(400).json({ message: "Invalid movie ID" });
+        }
+        
+        const movieCredits = await apiMovie.fetchCredits(parseInt(id));
+        
+        res.status(200).json(movieCredits);
+    } catch (error) {
+        res.status(500).json({ message: `Error fetching movie credits: ${error.message}` });
+    }
+};
+
+
+
+
 
 const createMovie = async (req, res) => {
     try{
@@ -93,6 +112,7 @@ const controllers = {
     getMovies,
     getMovieByUser,
     getMoviesById,
+    getCreditsById,
     createMovie,
     updateMovie,
     deleteMovie,

@@ -1,9 +1,9 @@
-const getDashboardUser = (req,res)=>{
-    //validacion de user autenticado y rol admin
+
+const getDashboardUser = (req, res) => {
 
     res.render('homeProfileUser');
-}
 
+  };
 module.exports = {
     getDashboardUser
 }
