@@ -9,7 +9,8 @@ const getDetail = async (req, res) => {
         }
 
         const movieDetails = await apiMovie.fetchMovieDetail(parseInt(id));
-        const movieCredits = await apiMovie.fetchCredits(parseInt(id));    
+        const movieCredits = await apiMovie.fetchCredits(parseInt(id));   
+        const movieTrailer= await apiMovie.fetchTrailer(parseInt(id));
 
         if (!movieDetails) {
             return res.status(404).send("Movie not found");
@@ -26,10 +27,27 @@ const getDetail = async (req, res) => {
         if (movieCredits && Array.isArray(movieCredits.cast)) {
             actors = movieCredits.cast.slice(0, 3); 
         }
+     
+        let trailerKey = null;
 
-        res.render('detail', {movieDetails: movieDetails, directors: directors, actors: actors});
+        if (movieTrailer && movieTrailer.results) {
+            const trailer = movieTrailer.results.find(trailer => trailer.site === "YouTube" && trailer.type === "Trailer");
+            if (trailer) {
+                trailerKey = trailer.key;
+            }
+        }
+
+        if (trailerKey) {
+            console.log("Trailer key:", trailerKey);
+        } else {
+            console.log("Trailer not found");
+        }
+
+        console.log(trailerKey)
+
+        res.render('detail', {movieDetails: movieDetails, directors: directors, actors: actors, trailerKey: trailerKey});
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message});
     }
 };
 

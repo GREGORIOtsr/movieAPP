@@ -2,7 +2,7 @@ const express = require('express');
 const usersAPIController = require("../controllers/api_controllers/usersApi.controller")
 const router = express.Router();
 
-router.get('/user/:userId?', usersAPIController.getUser);
+router.get('/user', usersAPIController.getUser);
 router.post('/createuser', usersAPIController.postUser);
 router.put('/edituser/:userId', usersAPIController.putUser);
 router.delete('/removeuser/:userId', usersAPIController.removeUser);
