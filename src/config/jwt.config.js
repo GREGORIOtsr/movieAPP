@@ -11,7 +11,6 @@ opts.jwtFromRequest = ExtractJWT.fromAuthHeaderWithScheme('jwt');
 opts.secretOrKey = `${process.env.JWT_SECRET}`;
 const passportJWTStrategy = new JWTStrategy(opts, function(jwtPayload, done) {
   // retreive mail from jwt payload
-  console.log(jwtPayload, '***********************************************************');
   const email = jwtPayload.email;
   const user = User.findOne({email: email});
   if (user) {

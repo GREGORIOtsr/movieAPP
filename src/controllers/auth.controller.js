@@ -42,6 +42,8 @@ const loginUser = async (req, res) => {
             const token = jwt.sign(user.toJSON(), `${process.env.JWT_SECRET}`, {
               expiresIn: 3600000,
             });
+            const data = JSON.stringify(user, {httpOnly: true, sameSite: "strict", maxAge: 3600000});
+            res.cookie('movieapp-user', data);
             res
               .cookie("access-token", token, {
                 httpOnly: true,
@@ -88,6 +90,11 @@ const googleAuth = async (req, res) => {
     const token = jwt.sign(data, process.env.JWT_SECRET, {
       expiresIn: 3600000,
     });
+    res.cookie('movieapp-user', data, {
+      httpOnly: true,
+      sameSite: "strict",
+      maxAge: 3600000
+    });
     res
       .cookie("access-token", token, {
         httpOnly: true,
@@ -110,6 +117,7 @@ const signOut = async (req, res) => {
         return next(err);
       }
       req.session.destroy();
+      res.clearCookie('movieapp-user');
       res.clearCookie("access-token").redirect("/login");
     });
   } catch (error) {

@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../schemas/mongo.users.schema');
+require('dotenv').config();
 const secret = process.env.JWT_SECRET;
 
 const verifyToken = express.Router();
