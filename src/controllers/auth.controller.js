@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../schemas/mongo.users.schema");
 const sqlUser = require("../schemas/sql.users.schema");
+const transporter = require('../config/nodemailer');
+const bcrypt = require('bcrypt');
 require("../config/google.config");
 require("dotenv").config();
 
@@ -42,14 +44,21 @@ const loginUser = async (req, res) => {
             const token = jwt.sign(user.toJSON(), `${process.env.JWT_SECRET}`, {
               expiresIn: 3600000,
             });
-            const data = JSON.stringify(user, {httpOnly: true, sameSite: "strict", maxAge: 3600000});
-            res.cookie('movieapp-user', data);
-            res
-              .cookie("access-token", token, {
-                httpOnly: true,
-                sameSite: "strict"
-              })
-              .redirect("/dashboard");
+            if (user.role == 'Admin') {
+              res
+                .cookie("access-token", token, {
+                  httpOnly: true,
+                  sameSite: "strict"
+                })
+                .redirect("/dashboardAdmin");
+            } else {
+              res
+                .cookie("access-token", token, {
+                  httpOnly: true,
+                  sameSite: "strict"
+                })
+                .redirect("/dashboardAdmin");
+            }
           } else {
             res
               .status(401)
@@ -90,17 +99,21 @@ const googleAuth = async (req, res) => {
     const token = jwt.sign(data, process.env.JWT_SECRET, {
       expiresIn: 3600000,
     });
-    res.cookie('movieapp-user', data, {
-      httpOnly: true,
-      sameSite: "strict",
-      maxAge: 3600000
-    });
-    res
-      .cookie("access-token", token, {
-        httpOnly: true,
-        sameSite: "strict",
-      })
-      .redirect("/dashboard");
+    if (user.role == 'Admin') {
+      res
+        .cookie("access-token", token, {
+          httpOnly: true,
+          sameSite: "strict"
+        })
+        .redirect("/dashboardAdmin");
+    } else {
+      res
+        .cookie("access-token", token, {
+          httpOnly: true,
+          sameSite: "strict"
+        })
+        .redirect("/dashboardAdmin");
+    }
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });
   }
@@ -118,10 +131,47 @@ const signOut = async (req, res) => {
       }
       req.session.destroy();
       res.clearCookie('movieapp-user');
-      res.clearCookie("access-token").redirect("/login");
+      res.clearCookie("access-token").redirect("/");
     });
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });
+  }
+};
+
+const recoverPassword = async (req, res) => {
+  try {
+      const recoverToken = jwt.sign({email: req.body.email}, process.env.JWT_SECRET, {expiresIn: '20m'});
+      const url = `${process.env.DOMAIN_URL || 'http://localhost:3000'}/resetpassword/` + recoverToken;
+      await transporter.sendMail({
+          from: process.env.MAIL_USER,
+          to: req.body.email,
+          subject: 'MovieAPP - Recover Password',
+          html: `<h3>Recover Password</h3>
+              <a href = ${url}>Click to recover password</a>
+              <p>Link will expire in 20 minutes!</p>`
+      });
+      res.status(200).json({
+          message: 'A recovery email has been sent to your mail direction'
+      })
+  } catch (error) {
+      console.log('Error:', error)
+  }
+};
+
+const resetPassword = async (req, res) => {
+  try {
+      const recoverToken = req.params.token;
+      const payload = jwt.verify(recoverToken, process.env.JWT_SECRET);
+      console.log(payload);
+      const password = req.body.password
+      const hashPassword = await bcrypt.hash(password, 10);
+      await User.findOneAndUpdate(
+          {email: payload.email},
+          {password: hashPassword}  
+      );
+      res.status(200).json({message: 'Password updated'});
+  } catch (error) {
+      console.log('Error:', error);
   }
 };
 
@@ -130,6 +180,8 @@ const controllers = {
   loginUser,
   googleAuth,
   signOut,
+  recoverPassword,
+  resetPassword
 };
 
 module.exports = controllers;

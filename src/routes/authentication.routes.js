@@ -13,5 +13,7 @@ router.post('/signup', auth.signUpUser);
 router.get('/', login.gethomeLogin);
 router.post('/login', auth.loginUser);
 router.get('/logout', auth.signOut);
+router.post('/recoverpassword', auth.recoverPassword);
+router.put('/resetpassword/:token', auth.resetPassword);
 
 module.exports = router;

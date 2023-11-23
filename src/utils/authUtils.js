@@ -24,9 +24,15 @@ const retrieveToken = (headers) => {
   }
 };
 
+const getCurrentUser = (token) => {
+  const user = jwt.decode(token, process.env.JWT_SECRET);
+  return user;
+};
+
 const utils = {
     isValidToken,
     retrieveToken,
-}
+    getCurrentUser
+};
 
 module.exports = utils;
