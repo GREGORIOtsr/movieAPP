@@ -7,17 +7,18 @@ const buttonDetail = document.querySelector(".detail-button");
 document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const request = await fetch("/api/search/:" + input.value, {
+    const request = await fetch("/api/search/:" + (input.value), {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
     });
     if (request.status === 200) {
       const data = await request.json();
       container.innerHTML = "";
-   
+      console.log(input.value)
       for (const movie of data) {
+
         let detailLink;
         if (movie._id) {
           detailLink = `/detail/${movie._id}`;
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML += `
         <div>
-         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt='movie poster'>
+         <img src="https://image.tmdb.org/t/p/w1000${movie.poster_path}" alt='movie poster'>
           <p>${movie.title}</p>
           <a href="${detailLink}">See more details</a>
         </div>
