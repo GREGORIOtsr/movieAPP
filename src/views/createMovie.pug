@@ -12,37 +12,37 @@ html
         img(src="/assets/play.png", alt="play")
         include navBarAdmin.pug 
   main
-    h2 Create Movie
-    form#createMovie(action="" method="POST")
-        fieldset 
+    form#formularioCreateMovie(action="" method="POST")
+        h2 Create Movie
+        fieldset.campoCreateMovie 
             p Title 
             input( class="inputCreate" type="text" name="title" required)
-        fieldset 
+        fieldset.campoCreateMovie 
             p Date 
             input( class="inputCreate" type="text" name="date")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Genre 
             input( class="inputCreate" type="text" name="genre")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Poster 
             input( class="inputCreate" type="file" name="poster")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Runtime
             input( class="inputCreate" type="text" name="runtime")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Synopsis 
             textarea( class="inputCreate" rows="4" cols="50" name="synopsis")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Director
             input( class="inputCreate" type="text" name= "director")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Actors
             input( class="inputCreate" type="text" name="actors")
-        fieldset 
+        fieldset.campoCreateMovie 
             p Created by
             input( class="inputCreate" type="text" name="email")
 
-        button#createButton(type="submit") Create
+        button#botonCreateMovie(type="submit") Create
   script(src='/createMovie.js')
   include footer.pug
 
