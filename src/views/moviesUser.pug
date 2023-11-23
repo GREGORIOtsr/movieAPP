@@ -11,11 +11,10 @@ html
       button.menu_button
         img(src="/assets/play.png" alt="play")
         include navBar.pug
-    main
+    main#usermovies 
       h2#pelisFavsTitulo My favourite movies   
       button( type="button" id="showfavs") Show my movies        
       section#pelisFavs   
-   
         article.peliFav      
 script(src='/getFavs.js')  
   include footer.pug

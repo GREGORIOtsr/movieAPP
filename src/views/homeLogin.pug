@@ -10,7 +10,7 @@ html
         h1 MovieApp
       button.menu_button
         img(src="/assets/play.png", alt="play")
-    main
+    main#mainlogin
       form#formularioLogin(action="/login", method="post")
         h1 Log In
         fieldset.campoFormLogin
@@ -25,8 +25,9 @@ html
         br
       
         div 
-    p Don't have an account? 
-    a(href='/signup') Click here to create one!
+      button#botonGoogle(type="button") Google
+      p Don't have an account? 
+      a(href='/signup') Click here to create one!
 
-    button#botonGoogle(type="button") Google
+  
     include footer.pug

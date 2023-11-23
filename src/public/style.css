@@ -12,8 +12,10 @@
     src: url("/fonts/HoW\ tO\ dO\ SoMeThInG.ttf");
 }
 
+
 body {
     background-color: #6cd6de;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* ESTILOS userProfile PAGE: */
@@ -241,6 +243,14 @@ main h2{
     border-radius: 166px;
 }
 /* Estilos main part => login page: */
+
+#mainlogin{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 #formularioLogin{
     border: 3px solid #45555f;
     border-radius: 175px;
@@ -317,6 +327,11 @@ main h2{
 }
 /* Estilos main part => movies page: */
 
+#usermovies{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
 
 #pelisFavsTitulo{
     text-align: center;
@@ -330,8 +345,6 @@ main h2{
     padding: 8px 12px;
 }
 .peliFav{
-    border: 1px solid black;
-    border-radius: 120px;
     width: 70%;
     margin: 0 auto;
     margin-top: 26px;
@@ -364,7 +377,7 @@ flex-wrap: wrap;
 background-color: white;
 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 margin: 10px;
-border-radius: 5px;
+border-radius: 5%;
 justify-content: space-evenly;
 align-items: center;
 }
@@ -373,7 +386,7 @@ align-items: center;
     width: 40%;
 }
 
-.showfavs{
+#showfavs{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -383,11 +396,25 @@ align-items: center;
     padding: 6px 14px;
     border: 1px solid #7ec8a0;
     border-radius: 32px;
-    width: 50%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-margin: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
 
 }
+
+#textfav{
+    width: 50%;
+
+}
+
+#textfav p{
+    font-size: 25px;
+
+}
+
+
+
 
 /* Estilos main part => dashboard admin page: */
 #pelisCreadasDashboard{
