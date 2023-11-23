@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>${directorName}</p>
               <p>${movieDetails.genres.map(genre => genre.name).join(', ')}</p>
               <p>${movieDetails.runtime} minutes</p>
-              <a href="/detail/${movie.id}">See more details</a>
+              <a class="adetails" href="/detail/${movie.id}">See more details</a>
             </div>
           `;
         } catch (error) {
