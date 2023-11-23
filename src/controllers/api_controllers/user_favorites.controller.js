@@ -1,5 +1,6 @@
 const Users = require('../../schemas/sql.users.schema');
 const User_favorites = require('../../schemas/sql.user_favorites.schema');
+const authUtils = require('../../utils/authUtils');
 require('../../schemas/sql_associations');
 
 
@@ -7,7 +8,8 @@ require('../../schemas/sql_associations');
 
 const getFavs = async (req, res) => {
     try {
-        const user = await Users.findOne({ where: {email: req.body.email} })
+        const currentUser = authUtils(req.cookies['access-token']);
+        const user = await Users.findOne({ where: {email: currentUser.email} })
         const movies = await User_favorites.findAll({ where: {user_id: user.id}});
         res.status(200).json(movies);
     } catch (error) {
@@ -17,7 +19,8 @@ const getFavs = async (req, res) => {
 
 const createFav = async (req, res) => {
     try {
-        const user = await Users.findOne({ where: {email: req.body.email} })
+        const currentUser = authUtils(req.cookies['access-token']);
+        const user = await Users.findOne({ where: {email: currentUser.email} })
         const newFav = await User_favorites.create({
             user_id: user.id,
             movie_id: req.body.movie_id
@@ -32,7 +35,8 @@ const createFav = async (req, res) => {
 
 const deleteFav = async (req, res) => {
     try {
-        const user = await Users.findOne({ where: {email: req.body.email} })
+        const currentUser = authUtils(req.cookies['access-token']);
+        const user = await Users.findOne({ where: {email: currentUser.email} })
         const movie = await User_favorites.destroy({ where: {
             user_id: user.id,
             movie_id: req.body.movie_id
