@@ -1,39 +1,21 @@
-//////////FAV///////////
 
-const button = document.querySelector(".button-favorite");
-
-const sendFav = (user_id, ) => {
-  const token = Cookies.get("token");
-
-  const request = new Request("/api/addfav", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      user_id,
-      movie_id,
-    }),
-  });
-
-  fetch(request)
-    .then((response) => {
-      if (response.ok) {
-        console.log("Fav added successfully");
-      } else {
-        console.log("Error adding fav");
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  const addButton = document.querySelector('.button-favorite');
+  addButton.addEventListener('click', function() {
+    const movieId = this.getAttribute('data-movie-id');
+    fetch('/api/addfavorite', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        movie_id: movieId })
     })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
-};
-
-const addFavorite = (email) => {
- 
-  favoritesAPIController.createFav(email, id);
-};
-
-button.addEventListener("click", () => {
-  sendFav(id, email);
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); 
+    })
+    .catch(error => console.error('Error:', error));
+  });
 });

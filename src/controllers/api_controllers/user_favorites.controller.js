@@ -1,5 +1,9 @@
 const Users = require('../../schemas/sql.users.schema');
 const User_favorites = require('../../schemas/sql.user_favorites.schema');
+require('../../schemas/sql_associations');
+
+
+
 
 const getFavs = async (req, res) => {
     try {
@@ -25,6 +29,7 @@ const createFav = async (req, res) => {
     }
 };
 
+
 const deleteFav = async (req, res) => {
     try {
         const user = await Users.findOne({ where: {email: req.body.email} })
@@ -45,3 +50,6 @@ const controllers = {
 }
 
 module.exports = controllers;
+
+
+

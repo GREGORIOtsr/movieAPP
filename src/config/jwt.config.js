@@ -7,7 +7,7 @@ const { Strategy: JWTStrategy, ExtractJwt: ExtractJWT } = passportJWT;
 
 // define passport jwt strategy
 const opts = {};
-opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken()
+opts.jwtFromRequest = ExtractJWT.fromAuthHeaderWithScheme('jwt');
 opts.secretOrKey = `${process.env.JWT_SECRET}`;
 const passportJWTStrategy = new JWTStrategy(opts, function(jwtPayload, done) {
   // retreive mail from jwt payload
@@ -17,7 +17,7 @@ const passportJWTStrategy = new JWTStrategy(opts, function(jwtPayload, done) {
     done(null, user);
   } else {
     done(null, false);
-  }
+  };
 });
 
 // Config passport

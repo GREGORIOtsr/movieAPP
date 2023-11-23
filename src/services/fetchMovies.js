@@ -65,4 +65,26 @@ const fetchCredits = async (id) => {
   }
 };
 
-module.exports = { fetchMovie, fetchMovieDetail, fetchCredits };
+const fetchTrailer =  async (id) => {
+  if (!id || typeof id !== "number") {
+    throw new Error("Invalid ID provided");
+  }
+
+  const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apikey}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!data || Object.keys(data).length === 0) {
+      throw new Error("No movies found with the given ID");
+    }
+
+    return data;
+  } catch (error) {
+    console.error(`ERROR: ${error.stack}`);
+    throw error;
+  }
+};
+
+
+module.exports = { fetchMovie, fetchMovieDetail, fetchCredits, fetchTrailer };
