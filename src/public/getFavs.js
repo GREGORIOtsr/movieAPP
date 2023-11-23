@@ -2,7 +2,7 @@
 const containerFavs = document.getElementById("peliFav")
 
 document.addEventListener('DOMContentLoaded', function() {
-    const showButton = document.querySelector('showfavs');
+    const showButton = document.querySelector('.showfavs');
     showButton.addEventListener('click', async function() {
         try {
             const response = await fetch('/api/userfavorites', {
@@ -17,10 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             containerFavs.innerHTML=""
             const data = await response.json();
-
-            containerFavs.innerHTML+=data
-            
             console.log('Success:', data);
+            data.forEach(fav => {
+                containerFavs.innerHTML += `<p>${fav.movie_id}</p>`; 
+            });
+                 
         } catch (error) {
             console.error('Error:', error);
         }
