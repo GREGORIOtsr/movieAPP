@@ -5,42 +5,42 @@ html
     link(rel="stylesheet", href="/style.css")
   body
     header
-     section.tituloClaqueta
+      section.tituloClaqueta
         img(src="/assets/claqueta.png", alt="claqueta")
         h1 MovieApp
-    button.menu_button
+      button.menu_button
         img(src="/assets/play.png", alt="play")
-    include navBarAdmin.pug
+        include navBar.pug
     main
-      h1= movieDetails.title || 'Movie Title'
-      button(type="button" class="button-favorite") Add to Favorites
-      button(type="button" class="remove-favorite") Remove from  Favorites
-      if movieDetails.poster_path
-        img(src="https://image.tmdb.org/t/p/w500/" + movieDetails.poster_path, alt=movieDetails.title + ' poster')
-      else
-        p Poster not available
-      if movieDetails.release_date
-        h2 Release Date
-        p= movieDetails.release_date
-      if movieDetails.genres && movieDetails.genres.length
-        h2 Genre
-        p= movieDetails.genres.map(genre => genre.name).join(', ')
-      if movieDetails.runtime
-        h2 Duration
-        p= movieDetails.runtime + ' minutes'
-      if movieDetails.overview
-        h2 Synopsis
-        p= movieDetails.overview
-      if movieDetails.vote_average
-        h2 Rating
-        p= movieDetails.vote_average + ' / 10'
-      if directors && directors.length
-        h2 Director(s)
-        p= directors.map(director => director.name).join(', ')
-      if actors && actors.length
-        h2 Cast
-        ul
-          each actor in actors
-            li= actor.name + ' as ' + actor.character
-  script(src="/addFavorite.js") 
+      section#detallesPeli
+        h1= movieDetails.title || 'Movie Title'
+        if movieDetails.poster_path
+          img#imagenPoster(src="https://image.tmdb.org/t/p/w500/" + movieDetails.poster_path, alt=movieDetails.title + ' poster')
+        else
+          p#posterError Poster not available
+        if movieDetails.release_date
+          h2.tituloCampo Release Date
+          p.infoCampo= movieDetails.release_date
+        if movieDetails.genres && movieDetails.genres.length
+          h2.tituloCampo Genre
+          p.infoCampo= movieDetails.genres.map(genre => genre.name).join(', ')
+        if movieDetails.runtime
+          h2.tituloCampo Duration
+          p.infoCampo= movieDetails.runtime + ' minutes'
+        if movieDetails.overview
+          h2.tituloCampo Synopsis
+          p.infoCampo= movieDetails.overview
+        if movieDetails.vote_average
+          h2.tituloCampo Rating
+          p.infoCampo= movieDetails.vote_average + ' / 10'
+        if directors && directors.length
+          h2.tituloCampo Director(s)
+          p.infoCampo= directors.map(director => director.name).join(', ')
+        if actors && actors.length
+          h2.tituloCampo Cast
+          ul#listaActores
+            each actor in actors
+              li.nombresActores= actor.name + ' as ' + actor.character 
+        button#botonAddFavs(type="button" class="button-favorite") Add to Favorites
     include footer.pug
+    script(src="/addFavorite.js")

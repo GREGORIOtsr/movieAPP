@@ -1,34 +1,33 @@
-doctype html
 html
   head
     title MovieApp
     link(rel="stylesheet" href="/style.css")
   body
     header
-      h1 MovieApp
-        section.tituloClaqueta
+      section.tituloClaqueta
           img(src="/assets/claqueta.png" alt="claqueta")
           h1 MovieApp
       button.menu_button
         img(src="/assets/play.png" alt="play")
         include navBarAdmin.pug
   main
-    section.perfil 
-      img(src="foto o avatar usuario" alt="foto o avatar usuario")   
+    section#perfilUsuario 
+      img(src="/assets/defaultAvatar.png" alt="foto o avatar usuario")   
       h3 Username: mariaDiana99 
       h3 Email: mariadiananaghiu09@gmail.com
-
-    button Editar mi perfil
-    section
-      article  
-        h2 Pelicula 1
-        img(src="assets" alt="foto pelicula 1")
-        p descripción breve película
-        button quitar de favs
-        article  
-          h2 Pelicula 2
-          img(src="assets" alt="foto pelicula 2")
-          p descripción breve película
+    button#editarPerfil Edit my profile
+    section#pelisCreadasDashboard
+      h2 My created movies
+      article.peliCreada  
+        h3 Movie 1
+        img(src="/assets/claqueta.png" alt="foto pelicula 1")
+        p little synopsis: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla beatae error tenetur expedita in dolores, officiis explicabo voluptatibus, quod voluptates distinctio ad natus hic corrupti voluptate placeat itaque molestias similique?
+        button.borrarPeli delete movie
+      article.peliCreada  
+        h3 Movie 2
+        img(src="/assets/claqueta.png" alt="foto pelicula 2")
+        p little synopsis: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla beatae error tenetur expedita in dolores, officiis explicabo voluptatibus, quod voluptates distinctio ad natus hic corrupti voluptate placeat itaque molestias similique?
+        button.borrarPeli delete movie
     include footer.pug
 
 

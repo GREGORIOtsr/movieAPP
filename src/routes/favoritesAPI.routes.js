@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/addfavorite', favoritesAPIController.createFav);
 
-router.get('/userfavorites/:email', favoritesAPIController.getFavs);
+router.get('/userfavorites/:id', favoritesAPIController.getFavs);
 
 router.delete('/removefavorite', favoritesAPIController.deleteFav);
 
