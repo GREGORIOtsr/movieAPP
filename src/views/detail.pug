@@ -47,5 +47,7 @@ html
               br
           h2 Trailer 
           iframe(width="560" height="315" src=`https://www.youtube.com/embed/${trailerKey}` frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
-        button#botonAddFavs(type="button" class="button-favorite") Add to Favorites
+        button#botonAddFavs(type="button" class="button-favorite" data-movie-id=movieDetails.id) Add to Favorites
+        button#botonRemoveFavs(type="button" class="button-remove" data-movie-id=movieDetails.id) Remove from Favorites
+  script(src='/addFavorite.js')
     include footer.pug

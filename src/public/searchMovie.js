@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>${movie.release_date}</p>
               <p>${directorName}</p>
               <p>${movieDetails.genres.map(genre => genre.name).join(', ')}</p>
-              <p>${movieDetails.runtime}</p>
+              <p>${movieDetails.runtime} minutes</p>
               <a href="/detail/${movie.id}">See more details</a>
             </div>
           `;

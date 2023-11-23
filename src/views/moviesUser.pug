@@ -2,21 +2,21 @@ doctype html
 html
   head
     title MovieApp
-    link(rel="stylesheet", href="/style.css")
+    link(rel="stylesheet" href="/style.css")
   body
     header
       section.tituloClaqueta
-        img(src="/assets/claqueta.png", alt="claqueta")
+        img(src="/assets/claqueta.png" alt="claqueta")
         h1 MovieApp
       button.menu_button
-        img(src="/assets/play.png", alt="play")
+        img(src="/assets/play.png" alt="play")
         include navBar.pug
     main
-      h2#pelisFavsTitulo My favourite movies
-      section#pelisFavs
-        button(type="button" class="showfavs") 
-        article.peliFav  
-          
+      h2#pelisFavsTitulo My favourite movies   
+      button( type="button" id="showfavs") Show my movies        
+      section#pelisFavs   
+   
+        article.peliFav      
+script(src='/getFavs.js')  
+  include footer.pug
 
-    include footer.pug
-            
