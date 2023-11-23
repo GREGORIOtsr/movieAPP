@@ -41,6 +41,11 @@ html
           ul#listaActores
             each actor in actors
               li.nombresActores= actor.name + ' as ' + actor.character 
+          h2.tituloCampo Reviews
+          ul#listaReviews
+            each review in reviews
+              li.review= review
+              br
         button#botonAddFavs(type="button" class="button-favorite") Add to Favorites
     include footer.pug
     script(src="/addFavorite.js")

@@ -1,4 +1,6 @@
 const apiMovie = require("../../services/fetchMovies");
+// const scraperSensa = require("../../utils/scraperSensa");
+const scraperFilmAffinity = require("../../utils/scraperFilmAffinity");
 
 const getDetail = async (req, res) => {
     try {
@@ -9,8 +11,10 @@ const getDetail = async (req, res) => {
         }
 
         const movieDetails = await apiMovie.fetchMovieDetail(parseInt(id));
-        const movieCredits = await apiMovie.fetchCredits(parseInt(id));    
-
+        const movieCredits = await apiMovie.fetchCredits(parseInt(id));
+        // const movieReviewsSensaCine = await scraperSensa(movieDetails.title);    
+        const movieReviewsFilmAffinity = await scraperFilmAffinity(movieDetails.title);       
+        
         if (!movieDetails) {
             return res.status(404).send("Movie not found");
         }
@@ -27,7 +31,7 @@ const getDetail = async (req, res) => {
             actors = movieCredits.cast.slice(0, 3); 
         }
 
-        res.render('detail', {movieDetails: movieDetails, directors: directors, actors: actors});
+        res.render('detail', {movieDetails: movieDetails, directors: directors, actors: actors, reviews: movieReviewsFilmAffinity});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
