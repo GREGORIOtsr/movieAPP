@@ -56,8 +56,6 @@ const filmReviews = async function (title) {
 
 }
 
-let reviews = filmReviews("barbie");
-// console.log(reviews);
 
 module.exports = filmReviews;
 

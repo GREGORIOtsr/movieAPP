@@ -13,8 +13,8 @@ const getDetail = async (req, res) => {
         const movieDetails = await apiMovie.fetchMovieDetail(parseInt(id));
         const movieCredits = await apiMovie.fetchCredits(parseInt(id));
         // const movieReviewsSensaCine = await scraperSensa(movieDetails.title);    
-        const movieReviewsFilmAffinity = await scraperFilmAffinity('barbie');       
-        console.log(movieReviewsFilmAffinity);
+        const movieReviewsFilmAffinity = await scraperFilmAffinity(movieDetails.title);       
+        
         if (!movieDetails) {
             return res.status(404).send("Movie not found");
         }
