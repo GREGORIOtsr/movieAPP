@@ -6,43 +6,44 @@ html
 
   body
     header
-      h1 MovieApp
-  section.tituloClaqueta
-    img(src="/assets/claqueta.png" alt="claqueta")
-    h1 MovieApp
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
       button.menu_button
-        img(src="/assets/play.png" alt="play")
+        img(src="/assets/play.png", alt="play")
         include navBarAdmin.pug
   main
-    h2 Edit Movie
-      form(action="" method="POST" class="formEdit")
-        fieldset 
+    
+      form#formularioEditMovie(action="" method="POST")
+        h1 Edit Movie
+        fieldset.campoEditMovie 
           p Title 
           input( class="inputEdit" type="text" name="title" required)
-        fieldset 
-          fieldset 
-            p Date 
-            input( class="inputEdit" type="text" name="date" required)
-            p Genres 
-            input( class="inputEdit" type="text" name="genre" required)
-        fieldset 
+        fieldset.campoEditMovie 
+          p Date 
+          input( class="inputEdit" type="text" name="date" required)
+        fieldset.campoEditMovie 
+          p Genres 
+          input( class="inputEdit" type="text" name="genre" required)
+        fieldset.campoEditMovie 
           p Poster 
           input( class="inputEdit" type="file" name="poster" required)
-        fieldset 
+        fieldset.campoEditMovie 
           p Runtime
           input( class="inputEdit" type="text" name="runtime" required)
-        fieldset 
+        fieldset.campoEditMovie 
           p Synopsis 
           textarea( class="inputEdit" rows="4" cols="50" name="synopsis" required)
-        fieldset 
+        fieldset.campoEditMovie 
           p Director
           input( class="inputEdit" type="text" name= "director" required)
-        fieldset 
+        fieldset.campoEditMovie 
           p Actors
           input( class="inputEdit" type="text" name="actors" required)
-        fieldset 
+        fieldset.campoEditMovie 
           p Edited by
           input(class="inputEdit" type="text" name="email" required)
-        button(type="submit") Edit
+
+        button#botonEditMovie(type="submit") Edit
   script(src='/editMovie.js') 
-    include footer.pug
+  include footer.pug

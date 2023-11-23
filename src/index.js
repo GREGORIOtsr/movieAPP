@@ -19,23 +19,23 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 app.set("trust proxy", 1);
 
+app.use(cookieParser());
+
 // Initialize passport and session
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: {},
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(cookieParser());
-
-const corsOptions = {
-    origin: process.env.DOMAIN_URL || 'http://localhost:3000',
-    credentials: false
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: process.env.DOMAIN_URL || 'http://localhost:3000',
+//     credentials: false
+// };
+// app.use(cors(corsOptions));
+app.use('*', cors());
 
 
 // Se indica el directorio donde se almacenarán las plantillas 
@@ -86,6 +86,9 @@ app.use('/', viewsAdminRoutes)
 const morgan = require('./middlewares/morgan');
 
 
+
+app.use('/', viewsUserRoutes);
+app.use('/', viewsAdminRoutes)
 
 app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 app.listen(port, () => {

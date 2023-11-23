@@ -1,5 +1,6 @@
 
-const getDashboardUser = (req, res) => {
+const getDashboardUser = (req,res)=>{
+    //validacion de user autenticado y rol admin
 
     res.render('homeProfileUser');
 

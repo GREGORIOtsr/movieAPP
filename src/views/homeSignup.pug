@@ -4,22 +4,30 @@ html
     title MovieApp
     link(rel="stylesheet", href="/style.css")
   body
-    h1 Sign up
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+      button.menu_button
+        img(src="/assets/play.png", alt="play")
+        include navBar.pug
+    main
+      form#formularioSignup(action="/signup", method="post")
+        h1 Sign up
+        fieldset.campoFormSignup
+          p Email
+          input(type="email", name="email", required)
+        fieldset.campoFormSignup
+          p Username
+          input(type="text", name="username", required)
+        fieldset.campoFormSignup
+          p Password
+          input(type="password", name="password", required)
+        fieldset.campoFormSignup
+          p Repeat password
+          input(type="password", name="repeatPassword", required)
+          br
 
-    form(action="/signup", method="post")
-      p Email
-      input(type="email", name="email", required)
-
-      p Username
-      input(type="text", name="username", required)
-
-      p Password
-      input(type="password", name="password", required)
-
-      p Confirm password
-      input(type="confirmPassword", name="confirmPassword", required)
-
-      button(type="submit") Sign up
-  include footer.pug
-
-
+        button#botonSignup(type="submit") Sign up
+        
+    include footer.pug

@@ -42,10 +42,12 @@ const loginUser = async (req, res) => {
             const token = jwt.sign(user.toJSON(), `${process.env.JWT_SECRET}`, {
               expiresIn: 3600000,
             });
+            const data = JSON.stringify(user, {httpOnly: true, sameSite: "strict", maxAge: 3600000});
+            res.cookie('movieapp-user', data);
             res
               .cookie("access-token", token, {
                 httpOnly: true,
-                sameSite: "strict",
+                sameSite: "strict"
               })
               .redirect("/dashboard");
           } else {
@@ -88,6 +90,11 @@ const googleAuth = async (req, res) => {
     const token = jwt.sign(data, process.env.JWT_SECRET, {
       expiresIn: 3600000,
     });
+    res.cookie('movieapp-user', data, {
+      httpOnly: true,
+      sameSite: "strict",
+      maxAge: 3600000
+    });
     res
       .cookie("access-token", token, {
         httpOnly: true,
@@ -101,7 +108,6 @@ const googleAuth = async (req, res) => {
 
 const signOut = async (req, res) => {
   try {
-    console.log(req.cookies.email);
     await User.findOneAndUpdate(
       { email: req.cookies.email },
       { logged: false }
@@ -111,8 +117,8 @@ const signOut = async (req, res) => {
         return next(err);
       }
       req.session.destroy();
-      res.clearCookie("access-token").send({ message: "User logged out" });
-      // res.clearCookie("access-token").redirect("/login");
+      res.clearCookie('movieapp-user');
+      res.clearCookie("access-token").redirect("/login");
     });
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });

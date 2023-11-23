@@ -12,10 +12,10 @@ html
         img(src="/assets/play.png" alt="play")
         include navBar.pug
     main
-      form(action="" method="GET") 
+      form.buscadorPeli(action="" method="GET") 
+        p Find any movie you want! 
         input(type="text" placeholder="Find movies" name="title" required)
         button(id="search-button" type="submit") Search
-        p Find any movie you want! 
       section#containerPelicula
     script(src='/searchMovie.js')
     include footer.pug

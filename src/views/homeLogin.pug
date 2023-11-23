@@ -4,20 +4,30 @@ html
     title MovieApp
     link(rel="stylesheet", href="/style.css")
   body
-    h1 Log In
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+      button.menu_button
+        img(src="/assets/play.png", alt="play")
+        include navBar.pug
+    main
+      form#formularioLogin(action="/login", method="post")
+        h1 Log In
+        fieldset.campoFormLogin
+          p Email
+          input(type="email", name="email", required)
+        fieldset.campoFormLogin
+          p Password
+          input(type="password", name="password", required)
+          br
 
-    form(action="/login", method="post")
-      p Email
-      input(type="email", name="email", required)
-
-      p Password
-      input(type="password", name="password", required)
-
-      button(type="submit") Log In
+        button#botonLogin(type="submit") Log In
+        br
       
-    div 
+        div 
     p Don't have an account? 
     a(href='/signup') Click here to create one!
 
-    button(type="button") Google
+    button#botonGoogle(type="button") Google
     include footer.pug
