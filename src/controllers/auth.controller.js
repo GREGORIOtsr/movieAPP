@@ -12,7 +12,7 @@ const signUpUser = async (req, res) => {
     if (!user) {
       await sqlUser.create({ email: req.body.email });
       await new User(req.body).save();
-      res.status(201).redirect("/login");
+      res.status(201).redirect("/");
     } else {
       res
         .status(409)
