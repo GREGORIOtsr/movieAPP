@@ -22,24 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       for (const movie of movies) {
         try {
-          const movieDetailsResponse = await fetch(`/api/detail/${movie.id}`);
-          const creditsResponse = await fetch(`/api/credits/${movie.id}`);
+          // const movieDetailsResponse = await fetch(`/api/detail/${movie.id}`);
+          // const creditsResponse = await fetch(`/api/credits/${movie.id}`);
 
-          if (!movieDetailsResponse.ok || !creditsResponse.ok) {
-            throw new Error('Error fetching movie details or credits');
-          }
+          // if (!movieDetailsResponse.ok || !creditsResponse.ok) {
+          //   throw new Error('Error fetching movie details or credits');
+          // }
 
-          const movieDetails = await movieDetailsResponse.json();
-          const credits = await creditsResponse.json();
+          // const movieDetails = await movieDetailsResponse.json();
+          // const credits = await creditsResponse.json();
 
-          console.log(movieDetails)
-          console.log(credits)
+          // console.log(movieDetails)
+          // console.log(credits)
 
-          const director = credits.crew.find(person => person.job === 'Director');
-          const directorName = director ? director.name : 'Director no encontrado';
+          // const director = credits.crew.find(person => person.job === 'Director');
+          // const directorName = director ? director.name : 'Director no encontrado';
           container.innerHTML += `
             <div>
-              <img src="https://image.tmdb.org/t/p/w500${movieDetails.poster_path}" alt='movie poster'>
+              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt='movie poster'>
               <p>${movie.title}</p>
               <p>${movie.release_date}</p>
               <p>${directorName}</p>

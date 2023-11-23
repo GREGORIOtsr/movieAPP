@@ -66,8 +66,6 @@ const getCreditsById = async (req, res) => {
 
 
 
-
-
 const createMovie = async (req, res) => {
     try{
         const data = req.body;

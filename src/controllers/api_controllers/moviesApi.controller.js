@@ -6,14 +6,14 @@ const { createMovie, updateMovie, deleteMovie } = require('../../models/movies.m
 const getMovies = async (req, res) =>{ 
     try {
         const title = req.params.title
-/*
-Busca primero en mongo
-        let movies = await Movie.find({ title: new RegExp(title, 'i') }); //busca primero en mongo, 
+    /*
+    Busca primero en mongo
+            let movies = await Movie.find({ title: new RegExp(title, 'i') }); //busca primero en mongo, 
 
-        if (movies.length === 0) {
-  Si no encuentra, va al fetch
-              movies = await apiMovie.fetchMovie(title);
-*/              
+            if (movies.length === 0) {
+    Si no encuentra, va al fetch
+                movies = await apiMovie.fetchMovie(title);
+    */              
         let movies = await apiMovie.fetchMovie(title); 
         res.status(200).json(movies); 
     }
