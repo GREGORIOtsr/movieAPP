@@ -6,7 +6,9 @@ const getMovies = async (req, res) => {
     try {
         let title = req.params.title;
         title = title.substring(1);
-        let movies = await Movie.find({title: new RegExp(title, 'i')}, '-_id -__v');
+        let movies = await Movie.find({title: new RegExp(title, 'i')})
+        .populate('createdBy', 'email -_id')
+        .select('-_id -__v');
         console.log('Buscando en la base de datos por título:', title, 'Resultados:', movies);
 
         if (movies.length === 0) {
@@ -20,11 +22,20 @@ const getMovies = async (req, res) => {
     }
 };
 
-const getMovieByUser = async (req, res) => {
+const getMoviesByEmail = async (email) => {
+    const user = await User.findOne({email: email})
+    const movies = await Movie
+        .find({createdBy: user.id})
+        .populate('createdBy', 'email -_id')
+        .select('-_id -__v');
+    return movies;
+}
+
+const getAllMovies = async (req, res) => {
     try {
         const movies = await Movie
             .find()
-            .populate('user', '-_id -__v')
+            .populate('createdBy', 'email -_id')
             .select('-_id -__v');
         res.status(200).json(movies);
     } catch (error) {
@@ -69,10 +80,10 @@ const getCreditsById = async (req, res) => {
 const createMovie = async (req, res) => {
     try{
         const data = req.body;
-        const userRef = await User.findOne({email: req.body.email});
+        const userRef = await User.findOne({email: req.body.createdBy});
         data.createdBy = userRef._id.toString();
-        await new Movie(data).save();
-        res.status(201).json({message: `Movie created.`});
+        const movie = await new Movie(data).save();
+        res.status(201).json({message: `Movie created.`, data: movie});
     }catch (error) {
         res.status(400).json({msj:`ERROR: ${error.stack}`});
     }
@@ -80,8 +91,8 @@ const createMovie = async (req, res) => {
 
 const updateMovie = async (req, res) => {
     try {
-        await Movie.findOneAndUpdate({title: req.body.title}, req.body, {new: true});
-        res.status(200).json({message: `Movie updated.`});
+        const movie = await Movie.findOneAndUpdate({title: req.body.title}, req.body, {new: true});
+        res.status(200).json({message: `Movie updated.`, data: movie});
     } catch (error) {
         res.status(400).json({message: `ERROR: ${error.stack}`});
     }
@@ -108,7 +119,8 @@ const deleteAllMovies = async (req, res) => {
 
 const controllers = {
     getMovies,
-    getMovieByUser,
+    getAllMovies,
+    getMoviesByEmail,
     getMoviesById,
     getCreditsById,
     createMovie,

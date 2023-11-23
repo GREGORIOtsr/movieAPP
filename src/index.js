@@ -73,7 +73,7 @@ app.use('/', authRoute);
 
 //Rutas API
 app.use('/api', moviesAPIRoutes);
-app.use('/api', usersAPIroutes);
+app.use('/api/user', usersAPIroutes);
 app.use('/api', favoritesAPIroutes);
 
 //Rutas views

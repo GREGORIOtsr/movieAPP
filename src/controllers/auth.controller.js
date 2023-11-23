@@ -90,7 +90,7 @@ const googleAuth = async (req, res) => {
       { new: true }
     );
     const data = {
-      emai: user.email,
+      email: user.email,
       username: user.username,
       profile_pic: user.profile_pic,
       role: user.role,
@@ -103,7 +103,7 @@ const googleAuth = async (req, res) => {
       res
         .cookie("access-token", token, {
           httpOnly: true,
-          sameSite: "strict"
+          sameSite: "lax"
         })
         .redirect("/dashboardAdmin");
     } else {

@@ -1,11 +1,10 @@
 const express = require('express');
-const usersAPIController = require("../controllers/api_controllers/usersApi.controller")
+const user_collection = require("../controllers/api_controllers/user_collection.controller")
 const router = express.Router();
 
-router.get('/user', usersAPIController.getUser);
-router.post('/createuser', usersAPIController.postUser);
-router.put('/edituser/:userId', usersAPIController.putUser);
-router.delete('/removeuser/:userId', usersAPIController.removeUser);
-
+router.get('/', user_collection.getUser);
+router.post('/', user_collection.createUser);
+router.put('/', user_collection.updateUser);
+router.delete('/', user_collection.deleteUser);
 
 module.exports = router

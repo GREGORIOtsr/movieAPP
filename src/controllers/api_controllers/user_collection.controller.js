@@ -3,8 +3,12 @@ const Movie = require("../../schemas/mongo.movies.schema");
 
 const getUser = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email }, "-_id -__v");
-    res.status(200).json(user);
+    const user = await User.findOne({email: req.body.email}, '-_id -__v -password');
+    if (!user) {
+      res.status(400).send({message: `User with email: '${req.body.email}' could not be found.`})
+    } else {
+      res.status(200).json(user);
+    }
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });
   }
@@ -12,8 +16,8 @@ const getUser = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        await new User(req.body).save();
-        res.status(201).json({message: `User created.`});
+        const user = await new User(req.body).save();
+        res.status(201).json({message: `User created.`, data: user});
     } catch (error) {
         res.status(400).json({message: `ERROR: ${error.stack}`});
     }
@@ -21,10 +25,12 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    await Provider.findOneAndUpdate({ email: req.body.email }, req.body, {
-      new: true,
-    });
-    res.status(200).json({ message: `User updated.` });
+    const user = await User.findOneAndUpdate({ email: req.body.email }, req.body, {new: true});
+    if (!user) {
+      res.status(400).send({message: `User with email: '${req.body.email}' could not be found.`})
+    } else {
+      res.status(200).json({ message: `User updated.`, data: user});
+    }
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });
   }
