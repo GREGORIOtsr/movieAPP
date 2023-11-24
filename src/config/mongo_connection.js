@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-mongoose.connect(process.env.MDB_CONNECTION_STRING);
+mongoose.connect(process.env.MDB_CONNECTION_STRING || 'mongodb://localhost:27017');
 
 const db = mongoose.connection;
 

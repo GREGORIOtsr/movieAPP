@@ -20,9 +20,9 @@ const userSeed = [
 const movieSeed = [
     {
         title: "Inception",
-        poster: "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+        poster: "oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
         date: "2010-07-15",
-        genre: ["Action", "Science Fiction", ],
+        genre: ["Action", "Science Fiction"],
         runtime: 148,
         synopsis: "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: 'inception', the implantation of another person's idea into a target's subconscious.",
         director: "Christopher Nolan",
@@ -30,7 +30,7 @@ const movieSeed = [
     },
     {
         title: "Titanic",
-        poster: "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+        poster: "9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
         date: "1997-11-18",
         genre: ["Drama", "Romance"],
         runtime: 194,
@@ -40,7 +40,7 @@ const movieSeed = [
     },
     {
         title: "Avengers: Endgame",
-        poster: "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+        poster: "or06FN3Dka5tukK1e9sl16pB3iy.jpg",
         date: "2019-04-24",
         genre: "Action",
         runtime: 149,

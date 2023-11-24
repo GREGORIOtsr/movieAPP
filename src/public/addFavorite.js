@@ -1,21 +1,27 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   const addButton = document.querySelector('.button-favorite');
-  addButton.addEventListener('click', function() {
+  addButton.addEventListener('click', async function() {
     const movieId = this.getAttribute('data-movie-id');
-    fetch('/api/addfavorite', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        movie_id: movieId })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data); 
-    })
-    .catch(error => console.error('Error:', error));
-  });
-});
+      try {
+          const response = await fetch('/api/addfavorite', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({movie_id: movieId }),
+          });
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          console.log('Success:', data);
+          alert("Movie added to favorite!")
+      } catch (error) {
+          console.error('Error:', error);
+      }
+  })
+
+  
+
+})

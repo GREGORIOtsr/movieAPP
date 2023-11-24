@@ -32,9 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const movieDetails = await movieDetailsResponse.json();
           const credits = await creditsResponse.json();
 
-          console.log(movieDetails)
-          console.log(credits)
-
           const director = credits.crew.find(person => person.job === 'Director');
           const directorName = director ? director.name : 'Director no encontrado';
           container.innerHTML += `
@@ -44,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>${movie.release_date}</p>
               <p>${directorName}</p>
               <p>${movieDetails.genres.map(genre => genre.name).join(', ')}</p>
-              <p>${movieDetails.runtime}</p>
-              <a href="/detail/${movie.id}">See more details</a>
+              <p>${movieDetails.runtime} minutes</p>
+              <a class="adetails" href="/detail/${movie.id}">See more details</a>
             </div>
           `;
         } catch (error) {

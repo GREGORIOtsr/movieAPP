@@ -12,8 +12,17 @@
     src: url("/fonts/HoW\ tO\ dO\ SoMeThInG.ttf");
 }
 
+
 body {
     background-color: #6cd6de;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+main{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 main{
     min-height: 80vh;
@@ -270,6 +279,14 @@ main h2{
     scale: 1.05;
 }
 /* Estilos main part => login page: */
+
+#mainlogin{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 #formularioLogin{
     border: 3px solid #45555f;
     border-radius: 175px;
@@ -373,6 +390,13 @@ main h2{
     scale: 1.05;
 }
 /* Estilos main part => movies page: */
+
+#usermovies{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
 #pelisFavsTitulo{
     text-align: center;
     font-size: xxx-large;
@@ -385,9 +409,7 @@ main h2{
     padding: 8px 12px;
 }
 .peliFav{
-    border: 1px solid black;
-    border-radius: 120px;
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 26px;
     margin-bottom: 25px;
@@ -412,16 +434,82 @@ main h2{
     font-size: x-large;
     text-align: center;
 }
-.peliFav button{
+
+#favcard{
+display: flex;
+flex-wrap: wrap;
+background-color: white;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+margin: 10px;
+border-radius: 5%;
+justify-content: space-evenly;
+align-items: center;
+}
+
+#favcard > img{
+    width: 40%;
+    border-radius: 5%;
+    margin: 15px;
+}
+
+#showfavs{
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    font-size: xx-large;
+    font-size: large;
     background-color: #212b30;
     color: #7ec8a0;
     padding: 6px 14px;
     border: 1px solid #7ec8a0;
     border-radius: 32px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+
 }
+
+#textfav{
+    width: 50%;
+
+}
+
+#textfav p{
+    font-size: 25px;
+
+}
+
+#textfav a{
+    text-decoration: none;
+    color:#212B30
+   
+
+}
+
+#textfav a:hover{
+    color:#00d0ff
+
+}
+
+
+#botonRemoveFavs{
+
+    margin: 0 auto;
+    font-size: large;
+    background-color: #212b30;
+    color: #7ec8a0;
+    padding: 6px 14px;
+    border: 1px solid #7ec8a0;
+    border-radius: 32px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+
+
+}
+
+
 
 /* Estilos main part => dashboard admin page: */
 #pelisCreadasDashboard{
@@ -475,6 +563,7 @@ main h2{
     padding: 8px 12px;
     height: 262px;
     text-align: center;
+    margin-bottom:10px;
 }
 .buscadorPeli p{
     font-size: 28px;
@@ -498,6 +587,7 @@ main h2{
     color: #45555f;
     border: 2px solid #212b30;
     border-radius: 100px;
+   
 }
 #containerPelicula{
     border: 4px solid #45555f;
@@ -517,7 +607,7 @@ main h2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #c6ffe0;
+    border-bottom: 1px solid #c6ffe0;
     border-radius: 252px;
     padding: 105px 226px;
     font-size: xx-large;
@@ -541,6 +631,8 @@ main h2{
     background-color: #bffada;
     text-align: center;
 }
+
+
 
 /* Estilos footer: */
 .footer {

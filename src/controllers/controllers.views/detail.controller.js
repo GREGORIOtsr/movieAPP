@@ -49,7 +49,7 @@ const getDetail = async (req, res) => {
 
         console.log(trailerKey)
 
-        res.render('detail', {movieDetails: movieDetails, directors: directors, actors: actors, trailerKey: trailerKey});
+        res.render('detail', {movieDetails: movieDetails, directors: directors, actors: actors, trailerKey: trailerKey, reviews: movieReviewsFilmAffinity});
     } catch (error) {
         res.status(500).json({ message: error.message});
     }

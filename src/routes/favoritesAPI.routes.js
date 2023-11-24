@@ -7,6 +7,6 @@ router.post('/addfavorite', favoritesAPIController.createFav);
 
 router.get('/userfavorites', favoritesAPIController.getFavs);
 
-router.delete('/removefavorite', favoritesAPIController.deleteFav);
+router.delete('/removefavorite/:id', favoritesAPIController.deleteFav);
 
 module.exports = router
