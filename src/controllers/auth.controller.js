@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
                   httpOnly: true,
                   sameSite: "strict"
                 })
-                .redirect("/dashboardAdmin");
+                .redirect("/dashboard");
             }
           } else {
             res
@@ -99,21 +99,12 @@ const googleAuth = async (req, res) => {
     const token = jwt.sign(data, process.env.JWT_SECRET, {
       expiresIn: 3600000,
     });
-    if (user.role == 'Admin') {
-      res
-        .cookie("access-token", token, {
-          httpOnly: true,
-          sameSite: "lax"
-        })
-        .redirect("/dashboardAdmin");
-    } else {
-      res
-        .cookie("access-token", token, {
-          httpOnly: true,
-          sameSite: "strict"
-        })
-        .redirect("/dashboardAdmin");
-    }
+    res
+      .cookie("access-token", token, {
+        httpOnly: true,
+        sameSite: "lax"
+      })
+      .redirect("/dashboard");
   } catch (error) {
     res.status(400).json({ message: `ERROR: ${error.stack}` });
   }

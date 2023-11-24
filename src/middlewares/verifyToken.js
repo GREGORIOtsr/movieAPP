@@ -24,7 +24,7 @@ verifyToken.use((req, res, next) => {
       }
     });
   } else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 });
 

@@ -3,6 +3,7 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const helmet = require('helmet')
 require('dotenv').config();
 require('./config/google.config');
 require('./config/jwt.config')(passport);
@@ -11,15 +12,13 @@ const path = require('path')
 const app = express();
 const port = process.env.PORT || 3000;
 
-const helmet = require('helmet')
-// const scraperSensaCine = require('./utils/scraperSensaCine.js')
-// const scraperFilmAffinity = require('./utils/scraperFilmAffinity.js')
-
 // Initialize express
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
-app.set("trust proxy", 1);
 
+// Securiting config
+app.set("trust proxy", 1);
+app.use('*', cors());
 app.use(cookieParser());
 
 //Para documentación con jsdoc:
@@ -34,20 +33,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// const corsOptions = {
-//     origin: process.env.DOMAIN_URL || 'http://localhost:3000',
-//     credentials: false
-// };
-// app.use(cors(corsOptions));
-app.use('*', cors());
-
-
-// Se indica el directorio donde se almacenarán las plantillas 
+// Pug views config
 app.set('views', './views');
-
-// Se indica el motor del plantillas a utilizar
 app.set('view engine', 'pug');
 app.use(express.static('public'))
+
+// Helmet config
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -59,12 +50,11 @@ app.use(
     }
   })
 );
+
 const moviesAPIRoutes = require("./routes/moviesAPI.routes");
 const usersAPIroutes = require("./routes/usersAPI.routes");
 const favoritesAPIroutes = require("./routes/favoritesAPI.routes");
-
-const viewsAdminRoutes = require('./routes/views.admin.routes');
-const viewsUserRoutes = require("./routes/viewsUser.routes")
+const views = require('./routes/views.routes');
 const authRoute = require('./routes/authentication.routes');
 const auth = require('./controllers/auth.controller');
 
@@ -72,29 +62,21 @@ const auth = require('./controllers/auth.controller');
 app.get("/auth/google", passport.authenticate("google", { scope: ['email', 'profile'], prompt: "select_account" }));
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/auth/failed' }), auth.googleAuth);
 
-
+// Authentication routes
 app.use('/', authRoute);
 
-//Rutas API
+//API routes
 app.use('/api', moviesAPIRoutes);
 app.use('/api/user', usersAPIroutes);
 app.use('/api', favoritesAPIroutes);
 
-//Rutas views
-app.use('/', viewsUserRoutes);
-app.use('/', viewsAdminRoutes)
-
-
+//View route
+app.use('/', views);
 
 // Morgan logger
 const morgan = require('./middlewares/morgan');
-
-
-
-app.use('/', viewsUserRoutes);
-app.use('/', viewsAdminRoutes)
-
 app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
+
 app.listen(port, () => {
     console.log(`>Listening on port: http://localhost:${port}`);
 })

@@ -20,11 +20,13 @@ html
           br
 
         button#botonLogin(type="submit") Log In
+        button#botonGoogle(type="button") 
+          a(href="/google/callback") Google
         br
       
         div 
-      p#notAccount Don't have an account? 
-      a#createAccount(href='/signup') Click here to create one!
-      br
-      button#botonGoogle(type="button") Google
+      p Don't have an account? 
+      a(href='/signup') Click here to create one!
+
+  
     include footer.pug
