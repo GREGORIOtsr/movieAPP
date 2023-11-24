@@ -6,6 +6,7 @@ const cors = require('cors');
 require('dotenv').config();
 require('./config/google.config');
 require('./config/jwt.config')(passport);
+const path = require('path')
 
 const app = express();
 const port = process.env.PORT || 3000;
