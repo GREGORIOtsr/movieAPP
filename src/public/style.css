@@ -15,6 +15,13 @@
 body {
     background-color: #6cd6de;
 }
+main{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* ESTILOS userProfile PAGE: */
 header {
@@ -25,6 +32,7 @@ header {
     padding: 20px 7px 20px 7px;
     align-items: center;
     margin-bottom: 42px;
+    min-height: 10vh;
 }
 
 .tituloClaqueta {
@@ -78,6 +86,10 @@ header {
     text-decoration: none;
     color: #00d0ff;
 } 
+.listaNavBar a:hover {
+    text-decoration: underline;
+    color: #44c4e0;
+} 
 
 /* Estilos main => dashboard perfil usuario: */
 #perfilUsuario {
@@ -90,7 +102,9 @@ header {
     border-radius: 68px;
     max-width: 850px;
     margin-bottom: 40px;
-    font-size: x-large;
+    font-size: xx-large;
+    padding: 117px 70px;
+    background-color: #c6ffe0;
 }
 
 #perfilUsuario img {
@@ -110,6 +124,9 @@ header {
     color: #45555f;
     border-radius: 100px;
     border: 2px solid #212b30;
+}
+#editarPerfil:hover{
+    scale: 1.05;
 }
 main h2{
     text-align: center;
@@ -150,6 +167,10 @@ main h2{
     padding: 15px 34px;
     border-radius: 166px;
 }
+#botonCreateMovie:hover{
+    background-color: #a8b6c2;
+    scale: 1.05;
+}
 /* Estilos main part => movie details page: */
 #detallesPeli{
     border: 3px solid #45555f;
@@ -189,6 +210,10 @@ main h2{
     border-radius: 166px;
     background-color: #bffada;
     color: #212b30;
+}
+#botonAddFavs:hover{
+    background-color: #a8b6c2;
+    scale: 1.05;
 }
 #listaActores{
     list-style: none;
@@ -240,6 +265,10 @@ main h2{
     padding: 15px 34px;
     border-radius: 166px;
 }
+#botonEditMovie:hover{
+    background-color: #a8b6c2;
+    scale: 1.05;
+}
 /* Estilos main part => login page: */
 #formularioLogin{
     border: 3px solid #45555f;
@@ -268,16 +297,40 @@ main h2{
 .campoFormLogin input{
     padding: 22px;
     border: 1px solid #45555f;
+    font-size: larger;
 }
 #botonLogin{
     font-size: xx-large;
     padding: 15px 34px;
     border-radius: 166px;
 }
+#botonLogin:hover{
+    background-color: #a8b6c2;
+    scale: 1.05;
+}
 #botonGoogle{
-    font-size: xx-large;
-    padding: 15px 78px;
+    font-size: 39px;
+    padding: 32px 109px;
     border-radius: 166px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 26px;
+}
+#botonGoogle:hover{
+    background-color: #a8b6c2;
+    scale: 1.05;
+}
+#notAccount{
+    font-size: xx-large;
+    text-align: center;
+}
+#createAccount{
+    font-size: 48px;
+    text-align: center;
+    text-decoration: none;
+    color: #45555f;
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
 }
 
@@ -314,6 +367,10 @@ main h2{
     font-size: xx-large;
     padding: 15px 34px;
     border-radius: 166px;
+}
+#botonSignup:hover{
+    background-color: #a8b6c2;
+    scale: 1.05;
 }
 /* Estilos main part => movies page: */
 #pelisFavsTitulo{
@@ -406,6 +463,9 @@ main h2{
     padding: 10px 24px;
     border: 2px solid #6fdba1;
 }
+.borrarPeli:hover{
+    scale: 1.05;
+}
 /* Estilos main part => search page: */
 .buscadorPeli{
     border: 4px solid #45555f;
@@ -429,6 +489,7 @@ main h2{
     font-size: x-large;
     background-color: #bffada;
     color: #212b30;
+    font-size: xx-large;
 }
 .buscadorPeli button{
     padding: 14px 33px;
@@ -440,7 +501,7 @@ main h2{
 }
 #containerPelicula{
     border: 4px solid #45555f;
-    border-radius: 68px;
+    border-radius: 253px;
     width: 90%;
     margin: 0 auto;
     padding: 8px 12px;
@@ -448,19 +509,25 @@ main h2{
     display: grid;
     justify-content: center;
     align-items: center;
-    justify-items: center; 
+    justify-items: center;
+    background-color: #45555f;
 }
 #containerPelicula div{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c6ffe0;
+    border-radius: 252px;
     padding: 105px 226px;
-    font-size: xxx-large;
-    margin-bottom: 40px;
-    margin-top: 28px;
+    font-size: xx-large;
+    background-color: #92f7ff;
+    width: 42%;
+    margin-top: 1px;
+    margin-bottom: 3px;
 }
 #containerPelicula div img{
-    margin: 0 auto;
+    display: flex;
 }
 #containerPelicula div p{
     text-align: center;
@@ -468,9 +535,11 @@ main h2{
 #containerPelicula div a{
     text-decoration: none;
     border: 1px solid #212b30;
+    border-radius: 23px;
     padding: 10px 20px;
     color: #212b30;
     background-color: #bffada;
+    text-align: center;
 }
 
 /* Estilos footer: */
@@ -483,6 +552,7 @@ main h2{
     padding: 28px 3px 28px 3px;
     color: #7EC8A0;
     margin-top: 26px;
+    min-height: 10vh;
 }
 .footer a img {
     width: 88px;
@@ -494,4 +564,207 @@ main h2{
 .footer p{
     max-width: 30%;
     text-align: center;
+}
+
+
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 526px){
+    /* HEADER PART */
+    header{
+        height: 12vh;
+    }
+    .tituloClaqueta img{
+        width: 44px;
+    }
+    .tituloClaqueta h1{
+        font-size: xxx-large;
+    }
+
+    /* navbar part */
+    .listaNavBar{
+        font-size: medium;
+        display: contents;
+    }
+    .listaNavBar a{
+        font-size: larger;
+    }
+    
+    /* MAIN PART */
+    main h2{
+        font-size: x-large;
+    }
+    /* login page */
+    #formularioLogin{
+        width: 90%;
+        font-size: larger;
+    }
+    #notAccount{
+        font-size: x-large;
+    }
+    #createAccount{
+        margin-top: 1px;
+        font-size: xx-large;
+    }
+    #createAccount:hover{
+        text-decoration: underline;
+        color: #212b30;
+    }
+    #botonLogin{
+        font-size: larger;
+        padding: 10px 28px;
+    }
+    #botonGoogle{
+        font-size: x-large;
+        padding: 13px 50px;
+    }
+    /* signup page */
+    #formularioSignup{
+        width: 90%;
+        font-size: larger;
+    }
+    /* dashboard profile user page */
+    #perfilUsuario{
+        font-size: large;
+        height: 38vh;
+    }
+    #botonSignup{
+        font-size: larger;
+        padding: 10px 28px;
+    }
+    #editarPerfil{
+        font-size: x-large;
+        padding: 7px 25px;
+    }
+
+    /* search page */
+    .buscadorPeli{
+        width: 75%;
+    }
+    .buscadorPeli p{
+        font-size: x-large;
+    }
+    .buscadorPeli input{
+        font-size: large;
+        text-align: center;
+    }
+    .buscadorPeli button{
+        font-size: large;
+        padding: 7px 21px;
+    }
+    #containerPelicula{
+        width: 98%;
+        margin: 0 auto;
+        margin-top: 10px; 
+    }
+    #containerPelicula div{
+        width: 56%;
+    }
+    /* fav movies page */
+    #pelisFavs{
+        height: fit-content;
+        width: 90%;
+    }
+    #pelisFavsTitulo{
+        text-align: center;
+        font-size: xx-large;
+        margin-top: 2px;
+    }
+    .peliFav{
+        height: fit-content;
+    }
+    .peliFav h2{
+        font-size: xx-large;
+    }
+    .peliFav img{
+        width: 125px;
+    }
+    .peliFav p{
+        font-size: larger;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 36px;
+        margin-bottom: 31px;
+    }
+    .peliFav button{
+        margin-bottom: 10px;
+    }
+    /* dashboard admin page */
+    #pelisCreadasDashboard{
+        width: 95%;
+        border: none;
+    }
+    .peliCreada{
+        width: 80%;
+        background-color: #9cf8ff;
+        font-size: medium;
+    }
+    .peliCreada h3{
+        font-size: x-large;
+    }
+    .peliCreada img{
+        width: 140px;
+    }
+    .peliCreada p{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 25px;
+        margin-bottom: 18px;
+    }
+    .borrarPeli{
+        font-size: larger;
+        padding: 5px 17px;  
+    }
+    /* create movie page */
+    #formularioCreateMovie{
+        font-size: larger;
+        width: 90%;
+    }
+    #formularioCreateMovie h2{
+        font-size: xx-large;
+    }
+    #formularioCreateMovie input{
+        font-size: large;
+        padding: 18px 10px;
+    }
+    #botonCreateMovie{
+        font-size: larger;
+        padding: 8px 28px;
+        margin-top: 30px;
+    }
+    /* edit movie page */
+    #formularioEditMovie{
+        font-size: larger;
+        width: 90%;
+    }
+    #formularioEditMovie h2{
+        font-size: xx-large; 
+    }
+    #formularioEditMovie input{
+        font-size: large;
+        padding: 18px 10px;
+    }
+    #botonEditMovie{
+        font-size: larger;
+        padding: 8px 28px;
+        margin-top: 30px;
+    }
+
+
+    /* FOOTER PART */
+    .footer{
+        height: 10vh;
+    }
+    .footer img{
+        width: 112px;
+    }
+    .footer a img{
+        width: 60px;
+        height: 60px;
+    }
+    .footer p{
+        max-width: 50%;
+        text-align: center;
+    }
+
 }

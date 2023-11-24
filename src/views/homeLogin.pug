@@ -8,9 +8,6 @@ html
       section.tituloClaqueta
         img(src="/assets/claqueta.png", alt="claqueta")
         h1 MovieApp
-      button.menu_button
-        img(src="/assets/play.png", alt="play")
-        include navBar.pug
     main
       form#formularioLogin(action="/login", method="post")
         h1 Log In
@@ -26,8 +23,8 @@ html
         br
       
         div 
-    p Don't have an account? 
-    a(href='/signup') Click here to create one!
-
-    button#botonGoogle(type="button") Google
+      p#notAccount Don't have an account? 
+      a#createAccount(href='/signup') Click here to create one!
+      br
+      button#botonGoogle(type="button") Google
     include footer.pug

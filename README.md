@@ -1,6 +1,6 @@
 <div align="center">
 
-#Movie APP
+## Movie APP
 
 <img src="./src/public/assets/gifClaqueta.gif" width=200><br>
 

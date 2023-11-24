@@ -21,6 +21,9 @@ app.set("trust proxy", 1);
 
 app.use(cookieParser());
 
+//Para documentación con jsdoc:
+app.use('/api-jsdoc', express.static(path.join(__dirname, '/jsondocs')));
+
 // Initialize passport and session
 app.use(session({
     secret: process.env.SESSION_SECRET,
