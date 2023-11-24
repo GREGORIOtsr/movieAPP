@@ -21,7 +21,7 @@ const searchAdmin = require(controllerBasePath + "/searchAdmin.controller");
 router.get('/dashboardAdmin', dashboardAdmin.getDashboardAdmin)
 router.get('/createmovie', createMovie.createMovieAdmin)
 router.get('/searchadmin', searchAdmin.getSearchAdmin)
-router.get('/editmovie', editMovie.editMovie);
+router.get('/editMovie', editMovie.editMovie);
 
 
 // router.delete('/removeMovie', removeMovie)

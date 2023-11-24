@@ -32,9 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const movieDetails = await movieDetailsResponse.json();
           const credits = await creditsResponse.json();
 
-          console.log(movieDetails)
-          console.log(credits)
-
           const director = credits.crew.find(person => person.job === 'Director');
           const directorName = director ? director.name : 'Director no encontrado';
           container.innerHTML += `

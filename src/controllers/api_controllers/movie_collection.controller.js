@@ -9,12 +9,9 @@ const getMovies = async (req, res) => {
         let movies = await Movie.find({title: new RegExp(title, 'i')})
         .populate('createdBy', 'email -_id')
         .select('-_id -__v');
-        console.log('Buscando en la base de datos por título:', title, 'Resultados:', movies);
 
         if (movies.length === 0) {
-            console.log('No se encontraron películas en la base de datos, buscando a través de la API');
             movies = await apiMovie.fetchMovie(title);
-            console.log('Resultados de la API')
         }
         res.status(200).json(movies);
     } catch (error) {
@@ -91,7 +88,10 @@ const createMovie = async (req, res) => {
 
 const updateMovie = async (req, res) => {
     try {
-        const movie = await Movie.findOneAndUpdate({title: req.body.title}, req.body, {new: true});
+        const { createdBy, ...updateData } = req.body;    
+        const userRef = await User.findOne({ email: createdBy });
+        updateData.createdBy = userRef._id;       
+        const movie = await Movie.findOneAndUpdate({ title: req.body.title }, updateData, { new: true });
         res.status(200).json({message: `Movie updated.`, data: movie});
     } catch (error) {
         res.status(400).json({message: `ERROR: ${error.stack}`});

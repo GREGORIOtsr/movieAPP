@@ -1,5 +1,5 @@
 
-const formEdit = document.querySelector('.formEdit');
+const formEdit = document.getElementById('formularioEditMovie');
 formEdit.addEventListener('submit', async (event) => {
 
   event.preventDefault();
@@ -24,7 +24,7 @@ formEdit.addEventListener('submit', async (event) => {
     .then((data) => {
    if (data.message === 'Movie updated.') {
     alert('Movie edited successfully!');
-    document.querySelector('.formEdit').reset()
+    formEdit.reset()
 } else {
     alert('Error editing movie: ' + data.message);
 }
