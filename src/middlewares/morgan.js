@@ -8,8 +8,10 @@ morgan.token("body", function (req, res) {
   return JSON.stringify(req.body);
 });
 
-morgan.token("param", function (req, res, param) {
-  return req.params[param];
+
+morgan.token('param', function (req, res, param) {
+  return req.params && req.params[param] ? req.params[param] : 'No Param';
 });
+
 
 module.exports = morgan;

@@ -1,0 +1,33 @@
+html
+  head
+    title MovieApp
+    link(rel="stylesheet" href="/style.css")
+  body
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png" alt="claqueta")
+        h1 MovieApp
+      include navBarAdmin.pug
+  main
+    section#perfilUsuario 
+      img(src="/assets/defaultAvatar.png" alt="foto o avatar usuario")   
+      h3= username
+    button#editarPerfil Edit my profile
+    section#pelisCreadasDashboard
+      h2 My created movies
+      each movie in movies
+        article.peliCreada  
+          h3= movie.title
+          img(src=movie.poster alt=`#{movie.title} poster`)
+          h3 Director: #{movie.director[0]}
+          h3 Genre: #{movie.genre[0]}
+          h3 Release date: #{movie.date}
+          h3 Runtime: #{movie.runtime}
+          p= movie.synopsis
+          button.borrarPeli delete movie
+    include footer.pug
+
+
+
+
+

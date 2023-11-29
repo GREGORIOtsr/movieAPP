@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title MovieApp
+    link(rel="stylesheet", href="/style.css")
+  body
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+      include navBar.pug
+  main
+    section#perfilUsuario 
+
+      img(src="/assets/defaultAvatar.png", alt="avatar usuario")   
+      h3= username
+    h2 Welcome!  
+  include footer.pug
+
+

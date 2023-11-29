@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    title= movieDetails.title || 'Movie Details'
+    link(rel="stylesheet" href="/style.css")
+  body
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png" alt="claqueta")
+        h1 MovieApp
+      button.menu_button
+        include navBar.pug
+    main
+      section#detallesPeli
+        h1= movieDetails.title || 'Movie Title'
+        if movieDetails.poster_path
+          img#imagenPoster(src="https://image.tmdb.org/t/p/w500/" + movieDetails.poster_path, alt=movieDetails.title + ' poster')
+        else
+          p#posterError Poster not available
+        if movieDetails.release_date
+          h2.tituloCampo Release Date
+          p.infoCampo= movieDetails.release_date
+        if movieDetails.genres && movieDetails.genres.length
+          h2.tituloCampo Genre
+          p.infoCampo= movieDetails.genres.map(genre => genre.name).join(', ')
+        if movieDetails.runtime
+          h2.tituloCampo Duration
+          p.infoCampo= movieDetails.runtime + ' minutes'
+        if movieDetails.overview
+          h2.tituloCampo Synopsis
+          p.infoCampo= movieDetails.overview
+        if movieDetails.vote_average
+          h2.tituloCampo Rating
+          p.infoCampo= movieDetails.vote_average + ' / 10'
+        if directors && directors.length
+          h2.tituloCampo Director(s)
+          p.infoCampo= directors.map(director => director.name).join(', ')
+        if actors && actors.length
+          h2.tituloCampo Cast
+          ul#listaActores
+            each actor in actors
+              li.nombresActores= actor.name + ' as ' + actor.character 
+          h2.tituloCampo Reviews
+          ul#listaReviews
+            each review in reviews
+              li.review= review
+              br
+          h2 Trailer 
+          iframe(width="560" height="315" src=`https://www.youtube.com/embed/${trailerKey}` frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+        button#botonAddFavs(type="button" class="button-favorite" data-movie-id=movieDetails.id) Add to Favorites
+  script(src='/addFavorite.js')
+    include footer.pug

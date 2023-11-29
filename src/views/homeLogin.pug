@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title MovieApp
+    link(rel="stylesheet", href="/style.css")
+  body
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+    main
+      form#formularioLogin(action="/login", method="post")
+        h1 Log In
+        fieldset.campoFormLogin
+          p Email
+          input(type="email", name="email", required)
+        fieldset.campoFormLogin
+          p Password
+          input(type="password", name="password", required)
+          br
+
+        button#botonLogin(type="submit") Log In
+        button#botonGoogle(type="button") 
+          a(href="/google/callback") Google
+        br
+      
+        div 
+      p Don't have an account? 
+      a(href='/signup') Click here to create one!
+
+  
+    include footer.pug

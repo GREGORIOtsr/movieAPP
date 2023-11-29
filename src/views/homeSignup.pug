@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title MovieApp
+    link(rel="stylesheet", href="/style.css")
+  body
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png", alt="claqueta")
+        h1 MovieApp
+    main
+      form#formularioSignup(action="/signup", method="post")
+        h1 Sign up
+        fieldset.campoFormSignup
+          p Email
+          input(type="email", name="email", required)
+        fieldset.campoFormSignup
+          p Username
+          input(type="text", name="username", required)
+        fieldset.campoFormSignup
+          p Password
+          input(type="password", name="password", required)
+        fieldset.campoFormSignup
+          p Repeat password
+          input(type="password", name="repeatPassword", required)
+          br
+
+        button#botonSignup(type="submit") Sign up
+        
+    include footer.pug

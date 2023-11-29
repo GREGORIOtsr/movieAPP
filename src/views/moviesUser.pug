@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title MovieApp
+    link(rel="stylesheet" href="/style.css")
+  body
+    header
+      section.tituloClaqueta
+        img(src="/assets/claqueta.png" alt="claqueta")
+        h1 MovieApp
+      button.menu_button
+        include navBar.pug
+    main#usermovies 
+      h2#pelisFavsTitulo My favourite movies   
+      button( type="button" id="showfavs") Show my movies        
+      section#pelisFavs   
+        article.peliFav      
+script(src='/getFavs.js')  
+  include footer.pug
+
