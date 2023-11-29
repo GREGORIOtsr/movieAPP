@@ -9,10 +9,8 @@ verifyAdmin.use((req, res, next) => {
     const user = jwt.decode(token, process.env.JWT_SECRET);
   
     if (user.role == 'Admin') {
-      console.log('Yes admin');
       next();
     } else {
-      console.log('Not admin');
       res.redirect('/dashboard')
     }
   });

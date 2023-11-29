@@ -8,7 +8,7 @@ const getDashboard = async (req, res) => {
       const movies = await movieCont.getMoviesByEmail(user.email);
       res
         .status(200)
-        .render("dashboardAdmin", { username: user.username, movies: movies });
+        .render("dashboardAdmin", { username: user.username, movies: movies, nav: 'navBarAdmin.pug' });
     } else {
       res.status(200).render("homeProfileUser", { username: user.username });
     }

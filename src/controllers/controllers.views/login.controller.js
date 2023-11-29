@@ -1,4 +1,5 @@
 const authUtils = require("../../utils/authUtils");
+const movieCont = require("../api_controllers/movie_collection.controller");
 
 const gethomeLogin = async (req, res) => {
   try {

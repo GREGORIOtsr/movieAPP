@@ -23,6 +23,13 @@ html
         button#botonGoogle(type="button") 
           a(href="/google/callback") Google
         br
+      section(id='recoverPassword')
+        h5 Recover password
+        form(action="/recoverpassword", method="post")
+          label(for="email") Email
+          input(type="email", name="email", id="recover", required)
+          input(type="submit", id="recoverbtn", value="Submit")
+        br
       
         div 
       p Don't have an account? 

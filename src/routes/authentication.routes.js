@@ -14,6 +14,7 @@ router.get('/', login.gethomeLogin);
 router.post('/login', auth.loginUser);
 router.get('/logout', auth.signOut);
 router.post('/recoverpassword', auth.recoverPassword);
+router.get('/resetpassword/:token?', auth.resetView)
 router.put('/resetpassword/:token', auth.resetPassword);
 
 module.exports = router;

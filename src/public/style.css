@@ -12,17 +12,9 @@
     src: url("/fonts/HoW\ tO\ dO\ SoMeThInG.ttf");
 }
 
-
 body {
     background-color: #6cd6de;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-main{
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 main{
     min-height: 80vh;
@@ -184,11 +176,14 @@ main h2{
 #detallesPeli{
     border: 3px solid #45555f;
     border-radius: 175px;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     width: 95%;
     padding: 39px 6px;
     text-align: center;
-    font-size: xxx-large; 
+    font-size: xxx-large;
+    align-items: center;
 }
 #detallesPeli h1{
     margin-bottom: 1px;
@@ -219,6 +214,7 @@ main h2{
     border-radius: 166px;
     background-color: #bffada;
     color: #212b30;
+    margin-top: 32px;
 }
 #botonAddFavs:hover{
     background-color: #a8b6c2;
@@ -279,14 +275,6 @@ main h2{
     scale: 1.05;
 }
 /* Estilos main part => login page: */
-
-#mainlogin{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
 #formularioLogin{
     border: 3px solid #45555f;
     border-radius: 175px;
@@ -350,6 +338,66 @@ main h2{
     justify-content: center;
     margin-top: 40px;
 }
+#resetForm{
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    border: 3px solid #45555f;
+    border-radius: 175px;
+    margin: 0 auto;
+    width: 70%;
+    padding: 39px 6px;
+    text-align: center;
+    font-size: xx-large;
+}
+#recoverPassword{
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    margin-top: 20px;
+}
+#recoverPassword form{
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    align-content: center;
+}
+#recoverPassword h5{
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+#recoverPassword label{
+    font-size: 35px;
+}
+#recoverPassword input[type=email]{
+    width: 45vw;
+    padding: 22px;
+    border: 1px solid #45555f;
+    font-size: larger;
+    align-self: center;
+    margin: 25px 0;
+}
+#recoverPassword input[type=submit]{
+    width: fit-content;
+    font-size: xx-large;
+    padding: 15px 34px;
+    border-radius: 166px;
+    align-self: center;
+}
+#resetForm label{
+    font-size: 30px;
+    font-weight: bold;
+}
+#resetForm input[type=submit]{
+    width: fit-content;
+    font-size: 25px;
+    align-self: center;
+}
+#resetForm input[type=password]{
+    font-size: 20px;
+    margin: 20px 0;
+    padding: 10px;
+}
 
 /* Estilos main part => signup page: */
 #formularioSignup{
@@ -390,13 +438,6 @@ main h2{
     scale: 1.05;
 }
 /* Estilos main part => movies page: */
-
-#usermovies{
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-
 #pelisFavsTitulo{
     text-align: center;
     font-size: xxx-large;
@@ -409,7 +450,9 @@ main h2{
     padding: 8px 12px;
 }
 .peliFav{
-    width: 70%;
+    border: 1px solid black;
+    border-radius: 120px;
+    width: 90%;
     margin: 0 auto;
     margin-top: 26px;
     margin-bottom: 25px;
@@ -434,82 +477,16 @@ main h2{
     font-size: x-large;
     text-align: center;
 }
-
-#favcard{
-display: flex;
-flex-wrap: wrap;
-background-color: white;
-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-margin: 10px;
-border-radius: 5%;
-justify-content: space-evenly;
-align-items: center;
-}
-
-#favcard > img{
-    width: 40%;
-    border-radius: 5%;
-    margin: 15px;
-}
-
-#showfavs{
+.peliFav button{
     display: flex;
-    flex-direction: column;
     margin: 0 auto;
-    font-size: large;
+    font-size: xx-large;
     background-color: #212b30;
     color: #7ec8a0;
     padding: 6px 14px;
     border: 1px solid #7ec8a0;
     border-radius: 32px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-
 }
-
-#textfav{
-    width: 50%;
-
-}
-
-#textfav p{
-    font-size: 25px;
-
-}
-
-#textfav a{
-    text-decoration: none;
-    color:#212B30
-   
-
-}
-
-#textfav a:hover{
-    color:#00d0ff
-
-}
-
-
-#botonRemoveFavs{
-
-    margin: 0 auto;
-    font-size: large;
-    background-color: #212b30;
-    color: #7ec8a0;
-    padding: 6px 14px;
-    border: 1px solid #7ec8a0;
-    border-radius: 32px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-
-
-}
-
-
 
 /* Estilos main part => dashboard admin page: */
 #pelisCreadasDashboard{
@@ -563,7 +540,6 @@ align-items: center;
     padding: 8px 12px;
     height: 262px;
     text-align: center;
-    margin-bottom:10px;
 }
 .buscadorPeli p{
     font-size: 28px;
@@ -587,7 +563,6 @@ align-items: center;
     color: #45555f;
     border: 2px solid #212b30;
     border-radius: 100px;
-   
 }
 #containerPelicula{
     border: 4px solid #45555f;
@@ -607,7 +582,7 @@ align-items: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #c6ffe0;
+    border: 1px solid #c6ffe0;
     border-radius: 252px;
     padding: 105px 226px;
     font-size: xx-large;
@@ -631,8 +606,6 @@ align-items: center;
     background-color: #bffada;
     text-align: center;
 }
-
-
 
 /* Estilos footer: */
 .footer {
@@ -661,7 +634,7 @@ align-items: center;
 
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 526px){
+@media screen (min-width: 526px){
     /* HEADER PART */
     header{
         height: 12vh;

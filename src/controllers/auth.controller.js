@@ -32,7 +32,7 @@ const loginUser = async (req, res) => {
       if (!user) {
         res
           .status(400)
-          .json({ success: false, message: `User does not exist.` });
+          .redirect('/');
       } else {
         user.comparePassword(password, async (error, isMatch) => {
           if (isMatch && !error) {
@@ -62,7 +62,7 @@ const loginUser = async (req, res) => {
           } else {
             res
               .status(401)
-              .json({ success: false, message: `Invalid password.` });
+              .redirect('/');
           }
         });
       }
@@ -141,18 +141,25 @@ const recoverPassword = async (req, res) => {
               <a href = ${url}>Click to recover password</a>
               <p>Link will expire in 20 minutes!</p>`
       });
-      res.status(200).json({
-          message: 'A recovery email has been sent to your mail direction'
-      })
+      res.status(200).redirect('/');
   } catch (error) {
       console.log('Error:', error)
   }
 };
 
+const resetView = async (req, res) => {
+  try {
+    res.status(200).render('resetPassword')
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
 const resetPassword = async (req, res) => {
   try {
       const recoverToken = req.params.token;
-      const payload = jwt.verify(recoverToken, process.env.JWT_SECRET);
+      console.log(recoverToken);
+      const payload = jwt.decode(recoverToken, process.env.JWT_SECRET);
       console.log(payload);
       const password = req.body.password
       const hashPassword = await bcrypt.hash(password, 10);
@@ -160,7 +167,7 @@ const resetPassword = async (req, res) => {
           {email: payload.email},
           {password: hashPassword}  
       );
-      res.status(200).json({message: 'Password updated'});
+      res.status(200).redirect('/');
   } catch (error) {
       console.log('Error:', error);
   }
@@ -172,6 +179,7 @@ const controllers = {
   googleAuth,
   signOut,
   recoverPassword,
+  resetView,
   resetPassword
 };
 
